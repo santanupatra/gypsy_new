@@ -1,0 +1,66 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>cart</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Company List </ion-title>
+    
+    <ion-buttons end class="position-rel">
+      <div class="cart-amnt">2</div>
+      <button ion-button icon-only >
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-card *ngFor="let listcompany of companyList"  >
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="{{image_url}}{{listcompany.Company.image}}">
+      </ion-thumbnail>
+      <h2>{{listcompany.Company.company_name}}</h2>
+      <!-- <p>Lorem Ipsum is simply dumy text of the watch printing and typesetting industry.</p> -->
+      <!-- <h2 class="price">$ 27.25</h2> -->
+          <div class="social-area">
+            <img (click)="gotoFeed(listcompany.Company.id,1)" *ngIf="listcompany.Company.fb_name !=''" src="assets/img/fb-icon.png" alt="">
+            <img (click)="gotoFeed(listcompany.Company.id,2)" *ngIf="listcompany.Company.twitter_name !=''" src="assets/img/twtr-icon.png" alt="">
+            <img (click)="gotoFeed(listcompany.Company.id,3)" *ngIf="listcompany.Company.pinterest_name !=''" src="assets/img/pint-icon.png" alt="">
+          </div>
+    </ion-item>
+  </ion-card>
+<!--   
+  <ion-card>
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="assets/img/nikon.jpg">
+      </ion-thumbnail>
+      <h2>Nikon D-90 DSLR</h2>
+      <p>Lorem Ipsum is simply dumy text of the watch printing and typesetting industry.</p>
+      <h2 class="price">$ 39.99</h2>
+      <div class="social-area">
+        <img src="assets/img/fb-icon.png" alt="">
+        <img src="assets/img/twtr-icon.png" alt="">
+        <img src="assets/img/pint-icon.png" alt="">
+      </div>
+    </ion-item>
+  </ion-card> -->
+
+</ion-content>

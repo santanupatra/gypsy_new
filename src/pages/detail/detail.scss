@@ -1,0 +1,36 @@
+page-detail {
+.title .toolbar-title{ text-align: center;}
+.title .toolbar-title img{ max-width: 38%;}
+.list-header{ background: #dbdbdb;  border-bottom:0; text-transform: inherit;}
+
+.label{ color: #4f4f4f; font-size: 1.9rem; font-weight: 600; }
+.card-content{ padding-top: 0; padding-bottom: 0;}
+.new-arrival{ overflow-x: scroll; display:-webkit-box; align-items: center; padding: 10px 0;}
+.new-arrival .card{ width: 245px;}
+.new-arrival .card:first-child{ margin-top: 0;}
+.new-arrival .card img{ padding: 1.5rem;}
+.card-pic{height: 200px; width: auto; margin: 0 auto;}
+.card-pic-ban{height: auto; width: auto; margin: 0 auto; object-fit: cover;}
+.new-arrival .card .card-content .row .col .card-title{ font-size: 1.5rem; font-weight: 600; margin:0; padding: 0 0 5px;}
+.star-area{width: auto;}
+.star-area .icon{ color: #f67401;}
+.star-area .rate{ font-size: 1.3rem;}
+.price{ color: #c60626; font-weight: 600; font-size: 1.6rem;}
+.price-b{color: #c60626; font-weight: 600; font-size: 1.8rem;}
+.button{ padding: 0; margin: 0; background: none; box-shadow: none; height: auto;}
+.button:hover:not(.disable-hover){ background-color: transparent; }
+.button .button-inner img{ padding: 0 0.2rem 0 0; width: 21px; }
+.like-nmbr{ color: #999999; font-size: 1.2rem;}
+.like-total{display: flex; justify-content: space-between; align-items: center;}
+.like-area{width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;}
+.like-area h3{ font-weight: 500; font-size: 1.3rem;}
+.social-area{width: auto; display: flex; justify-content: center !important; }
+.social-area img{ width: 28px; height: 28px; padding: 0 !important; margin: 1rem 0.3rem;}
+
+.ban-title{ font-size: 1.6rem; font-weight: 500; color: #222222; }
+.like-total-b{display: flex; justify-content: space-between; align-items: center; margin-top: 2px; padding: 8px 0 0;}
+
+.pro-des-tittle{ color: #222222; font-weight: 500;}
+.pro-des{ color: #4f4f4f; padding-bottom: 1rem;}
+
+}

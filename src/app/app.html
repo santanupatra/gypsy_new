@@ -1,0 +1,73 @@
+<ion-menu id="loggedInMenu" [content]="content">
+
+	<ion-header>
+		<ion-toolbar>
+			<ion-title>Categories</ion-title>
+		</ion-toolbar>
+	</ion-header>
+	
+	<ion-content class="outer-content">
+		<ion-list class="left-menu" *ngFor="let category of categoryList">
+			<button ion-item menuClose (click)="productList(category.Category.id)">
+				<ion-icon item-start><img src="{{image_url}}{{category.CategoryImage[0].originalpath}}" alt=""></ion-icon> {{category.Category.category_name}}
+			</button>
+			<button ion-button outline class="follow">Follow</button>
+		</ion-list>
+		
+    </ion-content>
+
+  </ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+
+
+
+<!--  footer Part start  -->
+<!-- <ion-tabs name="conference" *ngIf="!footerIsHidden">
+    <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home" tabUrlPath="conference-schedule"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="My Activity" tabIcon="heart"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="Social" tabIcon="people"></ion-tab>
+    <ion-tab [root]="tab4Root" tabTitle="Settings" tabIcon="cog"></ion-tab>
+</ion-tabs> -->
+
+<ion-footer *ngIf="!footerIsHidden" class="footer">
+    <ion-toolbar style=" padding: 0;">
+      <ion-grid style=" padding: 0;">
+        <ion-row class="row-bottom">
+          <ion-col text-center >
+              <a (click)="openPage('HomePage')">
+                  <ion-icon name="home"></ion-icon>
+                  <p class="titl">Home</p>
+              </a>
+          </ion-col>
+          <ion-col text-center>
+            <a (click)="openPage('WishlistPage')">
+              <ion-icon name="pricetags" ></ion-icon>
+              <p class="titl">Activity</p>
+            </a>
+          </ion-col>
+          <ion-col text-center>
+            <a (click)="openPage('CompanylistPage')" >
+              <ion-icon name="ios-list-box-outline"></ion-icon>
+              <p class="titl">Social</p>
+            </a>
+          </ion-col>
+        
+          <ion-col text-center>
+            <a (click)="openPage('SettingsPage')">
+              <ion-icon name="ios-person-outline"></ion-icon>
+              <p class="titl">Settings</p>
+            </a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  
+  
+  </ion-footer>
+  
+
+<!-- footer part end  -->
+

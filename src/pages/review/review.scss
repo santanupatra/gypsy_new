@@ -1,0 +1,12 @@
+page-review {
+    .content{ background-color: #e2e2e2;}
+    .item ion-thumbnail img{ height: auto; }
+    .item .label h2{ color: #000000; font-weight: 600;  text-overflow: normal; white-space: normal; word-wrap: break-all;}
+    .price{ color: #c60626 !important; padding: 8px 0;}
+    .item .item-button{ font-size: 1.5rem; text-transform: inherit; font-weight: 500; box-shadow: none;}
+    .item .item-button .icon{ padding-right: 0.5rem; font-size: 1.9rem;}
+    .position-rel{ position: relative;}
+    .cart-amnt{ background-color: #519120; position: absolute; width: 18px; height: 18px; z-index: 100; border-radius: 50%; top: -4px; right: 0; text-align: center; color: #ffffff;}
+    .note{ align-self: flex-start; color: #777777; }
+    .star{ color: #f67401;}
+}

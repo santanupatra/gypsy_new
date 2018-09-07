@@ -1,0 +1,79 @@
+<!--
+  Generated template for the EditProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+    <ion-navbar no-border-bottom>
+      <button ion-button menuToggle>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title> Edit Profile </ion-title>
+  
+      <ion-buttons end>
+        <!-- <button ion-button icon-only>
+           Save
+        </button> -->
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content>
+    <ion-list>
+    <ion-item class="brdr-0">
+      <ion-avatar>
+        <img src="assets/img/pro-pic.jpg">
+        <div class="edit-area"><ion-icon name="camera"></ion-icon></div>
+      </ion-avatar>
+    </ion-item>
+  
+    <div class="form-field">
+      <ion-label class="form-label" >First Name:</ion-label>
+      <ion-item>
+        <ion-input type="text" name="first_name" [(ngModel)]="data.first_name" value="" placeholder="Emma Megan"></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="form-field">
+        <ion-label class="form-label" >Last Name:</ion-label>
+        <ion-item> 
+          <ion-input type="text" name="last_name" [(ngModel)]="data.last_name" value="" placeholder="Emma Megan"></ion-input>
+        </ion-item>
+      </div>
+    
+  
+    <div class="form-field">
+      <ion-label class="form-label">Address:</ion-label>
+      <ion-item>
+        <ion-input type="text" name="address" [(ngModel)]="data.address" value="" placeholder="California C.A. USA"></ion-input>
+      </ion-item>
+    </div>
+  
+    <div class="form-field">
+      <ion-label class="form-label">Email:</ion-label>
+      <ion-item>
+        <ion-input readonly type="text" name="email" [(ngModel)]="data.email"  value="" placeholder="emmamegan@gmail.com"></ion-input>
+      </ion-item>
+    </div>
+  
+    <div class="form-field">
+      <ion-label class="form-label">Phone:</ion-label>
+      <ion-item>
+        <ion-input type="text" name="phoneno" [(ngModel)]="data.phoneno" value="" placeholder="589684423"></ion-input>
+      </ion-item>
+    </div>
+  
+    <div padding>
+      <button ion-button block color="danger" (click)="editProfile(data)">Submit</button>
+    </div>
+       
+  
+      
+  
+    
+  </ion-list>
+  </ion-content>
+  

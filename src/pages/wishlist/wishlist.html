@@ -1,0 +1,186 @@
+<!--
+  Generated template for the WishlistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+
+  <ion-navbar>
+    <ion-title>wishlist</ion-title>
+  </ion-navbar>
+
+</ion-header> -->
+
+<!-- <ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> My Activity </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="heart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> My Activity </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only >
+        <ion-icon name="heart"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <!-- <ion-toolbar no-border-top>    
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="wishlist">
+         Wishlist
+      </ion-segment-button>
+      <ion-segment-button value="likes">
+         Likes
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar> -->
+  <ion-toolbar no-border-top>
+    <div>
+      <ion-segment [(ngModel)]="pet">
+        <ion-segment-button value="wishlist">
+           Wishlist
+        </ion-segment-button>
+        <ion-segment-button value="likes">
+           Likes
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </ion-toolbar>
+  
+</ion-header>
+
+
+<ion-content> 
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'wishlist'">
+      <ion-card *ngFor="let productlist of productList">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="{{productlist.ProductImage}}">
+          </ion-thumbnail>
+          <h2>{{productlist.Product.product_name}}</h2>
+          <p innerHTML="{{productlist.Product.product_description}}"></p>
+          <h2 class="price">${{productlist.Product.price}}</h2>
+          <button ion-button color="secondary" (click)="addtoCart(productlist.Product.id)" > <ion-icon name="cart"></ion-icon>Add to cart</button>
+          <button ion-button color="danger" (click)="deletewishList(productlist.Wishlist.id)"> <ion-icon name="trash"></ion-icon>Remove</button>
+        </ion-item>
+      </ion-card>
+
+
+       <h3 *ngIf="is_exist ==0" style="text-align:center;">{{message}}</h3>
+
+    </ion-list>
+
+    <ion-list padding *ngSwitchCase="'likes'">
+
+        <ion-card *ngFor="let item of likelist">
+            <ion-item>
+              <ion-thumbnail item-start>
+                <img  src="assets/img/like-a.jpg" alt="">
+              </ion-thumbnail>
+              <h2>{{item.Product.product_name}}</h2>
+              <p innerHTML="{{item.Product.product_description}}"></p>
+              <h2 class="price">${{item.Product.price}}</h2>
+              <button ion-button color="secondary" > <ion-icon name="cart"></ion-icon>Add to cart</button>
+              <button ion-button color="danger" > <ion-icon name="trash"></ion-icon>Remove</button>
+            </ion-item>
+          </ion-card>
+       
+
+        <!-- <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/like-b.jpg" alt="">
+          </ion-avatar>
+          <h2 class="person-name">Angelina K</h2>
+          <div class="l-f-area">
+            <span item-start>Like</span>
+            <span item-start>Follow</span>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/like-c.jpg" alt="">
+          </ion-avatar>
+          <h2 class="person-name">Angelina K</h2>
+          <div class="l-f-area">
+            <span item-start>Like</span>
+            <span item-start>Follow</span>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/like-d.jpg" alt="">
+          </ion-avatar>
+          <h2 class="person-name">Angelina K</h2>
+          <div class="l-f-area">
+            <span item-start>Like</span>
+            <span item-start>Follow</span>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/like-e.jpg" alt="">
+          </ion-avatar>
+          <h2 class="person-name">Angelina K</h2>
+          <div class="l-f-area">
+            <span item-start>Like</span>
+            <span item-start>Follow</span>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/like-f.jpg" alt="">
+          </ion-avatar>
+          <h2 class="person-name">Angelina K</h2>
+          <div class="l-f-area">
+            <span item-start>Like</span>
+            <span item-start>Follow</span>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/like-g.jpg" alt="">
+          </ion-avatar>
+          <h2 class="person-name">Angelina K</h2>
+          <div class="l-f-area">
+            <span item-start>Like</span>
+            <span item-start>Follow</span>
+          </div>
+        </ion-item>
+
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/img/like-b.jpg" alt="">
+          </ion-avatar>
+          <h2 class="person-name">Angelina K</h2>
+          <div class="l-f-area">
+            <span item-start>Like</span>
+            <span item-start>Follow</span>
+          </div>
+        </ion-item> -->
+
+
+    </ion-list>
+  </div>
+
+</ion-content>

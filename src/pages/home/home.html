@@ -1,0 +1,144 @@
+<!--
+  Generated template for the HomePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <img src="assets/img/home-logo.png" alt="Ionic logo">
+    </ion-title>
+     <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="search"></ion-icon>
+        <ion-icon name="cart" (click)="gotoviewCart()"></ion-icon>
+      </button>
+    </ion-buttons> 
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-list-header class="item item-ios list-header list-header-ios">
+      New Arrival
+    </ion-list-header>
+    
+    <div class="new-arrival">
+       <ion-card *ngFor="let newarraival of newarraivalList; index as i"> 
+              
+        <img class="card-pic" src="{{newarraival.image}}" (click)="gotoDetails(newarraival.id)">
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="pl-0 pr-0">
+              <ion-card-title>
+                  {{newarraival.product_name}}
+              </ion-card-title>
+              <div class="star-area">
+                <span>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star-half"></ion-icon>
+                </span>
+                
+                <span class="rate">(4.5)</span>
+              </div>
+              <p class="price">${{newarraival.price}}</p>
+            </ion-col>
+            <ion-col class="pl-0 pr-0">
+              <div class="like-total">
+                <div class="like-area">  
+                  {{count}}               
+                  <button ion-button (click)="addLikelLst(newarraival.id, i)">
+                    <img *ngIf="newarraival.like == 0" src="assets/img/thumb.png" alt="">
+                    <img *ngIf="newarraival.like == 1" src="assets/img/thumb-b.png" alt="">
+                    <span class="like-nmbr">({{newarraival.total_like}})</span>
+                  </button>
+                  <h3>Like</h3>
+                </div>
+                <div class="like-area">
+                  <button ion-button (click)="addWishList(newarraival.id, i)">
+                    <img *ngIf="newarraival.wishlist == 0" src="assets/img/heart.png" alt="">
+                    <img *ngIf="newarraival.wishlist == 1" src="assets/img/heart-b.png" alt="">
+                    <span class="like-nmbr">({{newarraival.total_wishlist}})</span>
+                  </button>
+                  <h3>WishList</h3>
+                </div>
+              </div>
+              <div class="social-area">
+               <a href="{{newarraival.fb_link}}" ><img src="assets/img/fb-icon.png" alt=""></a>
+               <a href="{{newarraival.twitter_link}}">  <img src="assets/img/twtr-icon.png" alt=""></a>
+               <a href="{{newarraival.printerest_link}}"> <img src="assets/img/pint-icon.png" alt=""></a>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+
+    <ion-list-header class="item item-ios list-header list-header-ios">
+     Best Seller
+    </ion-list-header>
+    <div class="new-arrival">
+      <ion-card *ngFor="let bseller of bestseller">
+        <img class="card-pic" src="{{image_url}}{{bseller.product_images.originalpath}}" (click)="gotoDetails(bseller.products.id)">
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="pl-0 pr-0">
+              <ion-card-title>
+                 {{bseller.products.product_name}}
+              </ion-card-title>
+              <div class="star-area">
+                <span>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star"></ion-icon>
+                  <ion-icon name="star-half"></ion-icon>
+                </span>
+    
+                <span class="rate">(4.5)</span>
+              </div>
+              <p class="price">${{bseller.products.price}}</p>
+            </ion-col>
+            <ion-col class="pl-0 pr-0">
+              <div class="like-total">
+                <div class="like-area">
+                  <button ion-button>
+                    <img src="assets/img/thumb-b.png" alt="">
+                    <span class="like-nmbr">(139)</span>
+                  </button>
+                  <h3>Like</h3>
+                </div>
+                <div class="like-area">
+                  <button ion-button>
+                    <img src="assets/img/heart-b.png" alt="">
+                    <span class="like-nmbr">(38)</span>
+                  </button>
+                  <h3>WishList</h3>
+                </div>
+              </div>
+              <div class="social-area">
+                <img src="assets/img/fb-icon.png" alt="">
+                <img src="assets/img/twtr-icon.png" alt="">
+                <img src="assets/img/pint-icon.png" alt="">
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    
+    </div>
+
+  </ion-list>
+  
+
+</ion-content>
