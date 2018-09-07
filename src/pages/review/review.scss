@@ -9,4 +9,10 @@ page-review {
     .cart-amnt{ background-color: #519120; position: absolute; width: 18px; height: 18px; z-index: 100; border-radius: 50%; top: -4px; right: 0; text-align: center; color: #ffffff;}
     .note{ align-self: flex-start; color: #777777; }
     .star{ color: #f67401;}
+    .list{
+        margin-bottom: 60px;
+    }
+    .card{
+        box-shadow: 0 0 10px rgba(0,0,0,.1);
+    }
 }

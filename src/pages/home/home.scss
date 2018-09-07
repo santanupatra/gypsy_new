@@ -4,7 +4,7 @@ page-home {
     .title .toolbar-title img{ max-width: 38%;}
     .list-header{ background: #dbdbdb;  border-bottom:0; text-transform: inherit;}
     
-    .label{ color: #4f4f4f; font-size: 1.9rem; font-weight: 600; }
+    .label{ color: #4f4f4f; font-size: 1.7rem; font-weight: 600; }
     .card-content{ padding-top: 0; padding-bottom: 0;}
     .new-arrival{ overflow-x: scroll; display:-webkit-box; align-items: center; padding: 10px 0;}
     .new-arrival .card{ width: 245px;}
@@ -15,7 +15,7 @@ page-home {
     .star-area{width: auto;}
     .star-area .icon{ color: #f67401;}
     .star-area .rate{ font-size: 1.3rem;}
-    .price{ color: #c60626; font-weight: 600; font-size: 1.6rem;}
+    .price{ color: #555; font-weight: 600; font-size: 1.6rem;}
     .button{ padding: 0; margin: 0; background: none; box-shadow: none; height: auto;}
     .button:hover:not(.disable-hover){ background-color: transparent; }
     .button .button-inner img{ padding: 0 0.2rem 0 0; width: 21px; }
@@ -32,6 +32,8 @@ page-home {
     .cat-slider ion-slide.swiper-slide .image-holder img{width:100%!important; height:100% !important; object-fit:cover}
     .cat-slider ion-slide.swiper-slide p{text-align:center; font-size:1rem; padding:0 5px}
     
-
+    .main-area{
+        margin-bottom: 56px !important;
+    }
 }
     

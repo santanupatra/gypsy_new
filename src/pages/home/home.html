@@ -14,9 +14,11 @@
       <img src="assets/img/home-logo.png" alt="Ionic logo">
     </ion-title>
      <ion-buttons end>
-      <button ion-button icon-only>
+       <button ion-button icon-only>
         <ion-icon name="search"></ion-icon>
-        <ion-icon name="cart" (click)="gotoviewCart()"></ion-icon>
+       </button>
+      <button ion-button icon-only>
+        <ion-icon name="md-cart" (click)="gotoviewCart()"></ion-icon>
       </button>
     </ion-buttons> 
   </ion-navbar>
@@ -24,7 +26,7 @@
 
 
 <ion-content>
-  <ion-list>
+  <ion-list class="main-area">
     <ion-list-header class="item item-ios list-header list-header-ios">
       New Arrival
     </ion-list-header>

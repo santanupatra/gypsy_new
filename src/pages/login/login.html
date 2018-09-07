@@ -26,26 +26,26 @@
 			</ion-item>
 			<p *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched" ion-text color="danger">Password is required </p>
 			<ion-row responsive-sm>
-				<ion-col class="pt-0">
+				<ion-col class="pt-0 pl-0">
 					<ion-item>
 						<ion-label>Remember me</ion-label>
 						<ion-checkbox color="dark" checked="true"></ion-checkbox>
 					</ion-item>
 				</ion-col>
-				<ion-col class="pt-0">
+				<ion-col class="pt-0 pr-0">
 					<p text-right (click)="goForgotPassword();">Forgot Password ?</p>
 				</ion-col>
 			</ion-row>
-			<button ion-button color="danger" [disabled]="!loginForm.valid" block (click)="login(loginForm.value)">Login</button>
+			<button ion-button class="btn-primary" [disabled]="!loginForm.valid" block (click)="login(loginForm.value)">Login</button>
 			
 		</ion-list>
 
 		<ion-row class="or-area" responsive-sm>
-			<ion-col col-3 class="pr-0 pb-0" style="display: flex; align-items: center; justify-content: center;">
+			<ion-col col-3 class="pr-0 pb-0" style="display: flex; align-items: center; justify-content: flex-end;">
 				<div class="line"></div>
 			</ion-col>
 			<ion-col col-6 class="pl-0 pr-0 pb-0"> <p text-center class="or"> or connect with </p> </ion-col>
-			<ion-col col-3 class="pl-0 pb-0" style="display: flex; align-items: center; justify-content: center;">
+			<ion-col col-3 class="pl-0 pb-0" style="display: flex; align-items: center; justify-content: flex-start;">
 				<div class="line"></div>
 			</ion-col>
 		</ion-row>

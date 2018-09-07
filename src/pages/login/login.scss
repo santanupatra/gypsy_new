@@ -3,7 +3,7 @@
 
 page-user {
   .logo {
-    padding: 80px 0 40px;
+    padding: 50px 0 40px;
     // min-height: 200px;
     text-align: center;
 
@@ -27,20 +27,20 @@ page-user {
   .row .col .item{ margin-bottom: 0;}
   .row .col .item-checkbox .checkbox{ margin-right: 9px; margin-left: 0;}
   .row .col .item-checkbox .item-inner{ border: 0; padding-left:0; padding-right: 0;}
-  .checkbox + .item-inner ion-label{ color: #555555; font-weight: 500;}
+  .checkbox + .item-inner ion-label{ color: #555555; font-weight: 500;font-size: 14px;}
 
  .row .col .item-checkbox .checkbox .checkbox-icon{ border-color:#d4d4d4; }
-.checkbox-checked{ background-color: #c60626 !important; border-color:#c60626 !important;}
+.checkbox-checked{background-color: #c0c0c0 !important;border-color: #c0c0c0 !important;}
 .row .col p{ color: #555555; font-weight: 500;}
 
-.button{ height: 4.2rem;}
+// .button{ height: 4.2rem;}
 .line{ width: 50px; height: 1px; background-color: #555555;  }
 .or-area{ margin-top: 0;}
-.or{ font-size: 1.6rem; text-transform: uppercase; font-weight: 600 !important;} 
+.or{ font-size: 1.3rem; text-transform: uppercase; font-weight: 600 !important;} 
 .social-icon{ width: 50px; height: 50px;}
 
-.acess{ color: #555555; font-weight: 500; font-size: 1.5rem;}
-.guest{ color: #c60626; text-transform: uppercase; font-weight: 600;}
+.acess{ color: #777; font-weight: 500; font-size: 1.5rem;}
+.guest{ color: #555; text-transform: uppercase; font-weight: 600;}
 
 
 .gray-text{ color: #555555 !important;}

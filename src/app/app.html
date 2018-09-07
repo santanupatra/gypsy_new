@@ -32,32 +32,32 @@
     <ion-tab [root]="tab4Root" tabTitle="Settings" tabIcon="cog"></ion-tab>
 </ion-tabs> -->
 
-<ion-footer *ngIf="!footerIsHidden" class="footer">
+<ion-footer *ngIf="!footerIsHidden" class="footer custom-footer">
     <ion-toolbar style=" padding: 0;">
       <ion-grid style=" padding: 0;">
         <ion-row class="row-bottom">
           <ion-col text-center >
-              <a (click)="openPage('HomePage')">
-                  <ion-icon name="home"></ion-icon>
+              <a (click)="openPage('HomePage')" class="activated">
+                  <ion-icon name="md-home"></ion-icon>
                   <p class="titl">Home</p>
               </a>
           </ion-col>
           <ion-col text-center>
             <a (click)="openPage('WishlistPage')">
-              <ion-icon name="pricetags" ></ion-icon>
-              <p class="titl">Activity</p>
+              <ion-icon name="md-heart" ></ion-icon>
+              <p class="titl">My Activity</p>
             </a>
           </ion-col>
           <ion-col text-center>
             <a (click)="openPage('CompanylistPage')" >
-              <ion-icon name="ios-list-box-outline"></ion-icon>
+              <ion-icon name="md-people"></ion-icon>
               <p class="titl">Social</p>
             </a>
           </ion-col>
         
           <ion-col text-center>
             <a (click)="openPage('SettingsPage')">
-              <ion-icon name="ios-person-outline"></ion-icon>
+              <ion-icon name="ios-cog"></ion-icon>
               <p class="titl">Settings</p>
             </a>
           </ion-col>
