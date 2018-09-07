@@ -68,6 +68,13 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900');
+
+body,ion-app.md,h1,h2,h3,h4,h5,h6,p,label,input,.label,.select-text,a,li,.segment-button,.toolbar-title{
+  font-family: 'Montserrat', sans-serif;
+}
+
+
 .left-menu{margin-bottom:0;position:relative; padding-right:60px; background: #fff;}
 .left-menu .follow{right:0;position:absolute; top:8px; right:10px; font-size: 10px; height:2.5rem; padding: 0 0.8em; text-transform:uppercase}
 .left-menu .item > ion-icon:first-child{min-width:40px;}
@@ -76,3 +83,79 @@
 .left-menu .item .item-inner .label{font-size:1.4rem}
 .left-menu.list-ios .item-block .item-inner, .left-menu.list-md .item-block .item-inner {border-bottom: none;}
 .left-menu.list-ios > .item-block:first-child {border-top: 0;}
+.btn-primary{
+  background: #c0c0c0;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btn-dark{
+  background: #888;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.pt-0{padding-top: 0 !important;}
+.pr-0{ padding-right: 0 !important;}
+.pb-0{ padding-bottom: 0 !important;}
+.pl-0{padding-left: 0 !important;}
+
+.mt-0{margin-top: 0 !important;}
+.mr-0{margin-right: 0 !important;}
+.mb-0{ margin-bottom: 0 !important;}
+.ml-0{margin-left: 0 !important;}
+//    header
+
+.header {
+  .bar-button{
+    color: #fff;
+  }
+  .toolbar-background {
+    background: #c0c0c0;
+    border: none !important;
+  }
+  .bar-buttons{
+    .bar-button{
+      margin-left: 5px;
+      font-size: 14px;
+    }
+  }
+  .toolbar-title {
+    font-size: 1.5rem;
+    color: #fff;
+  }
+  .back-button-text{
+    display: none;
+  }
+}
+
+.follow{
+  border-color: #555;
+  color: #555;
+}
+
+// footer 
+
+.custom-footer{
+  a{
+    color:#ccc;
+    ion-icon{
+      font-size: 24px;
+    }
+    &.activated{
+      color: #4f4f4f;
+    }
+  }
+  p{
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .toolbar-background{
+    background:#f1f1f1;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+  }
+}

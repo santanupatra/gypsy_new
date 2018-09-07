@@ -76,8 +76,8 @@
           <h2>{{productlist.Product.product_name}}</h2>
           <p innerHTML="{{productlist.Product.product_description}}"></p>
           <h2 class="price">${{productlist.Product.price}}</h2>
-          <button ion-button color="secondary" (click)="addtoCart(productlist.Product.id)" > <ion-icon name="cart"></ion-icon>Add to cart</button>
-          <button ion-button color="danger" (click)="deletewishList(productlist.Wishlist.id)"> <ion-icon name="trash"></ion-icon>Remove</button>
+          <button ion-button  class="btn-dark" (click)="addtoCart(productlist.Product.id)" > <ion-icon name="cart"></ion-icon>Add to cart</button>
+          <button ion-button class="btn-primary" (click)="deletewishList(productlist.Wishlist.id)"> <ion-icon name="trash"></ion-icon>Remove</button>
         </ion-item>
       </ion-card>
 
@@ -86,19 +86,26 @@
 
     </ion-list>
 
-    <ion-list padding *ngSwitchCase="'likes'">
+    <ion-list *ngSwitchCase="'likes'"  class="lisk-list">
 
         <ion-card *ngFor="let item of likelist">
-            <ion-item>
+            <!-- <ion-item>
               <ion-thumbnail item-start>
                 <img  src="assets/img/like-a.jpg" alt="">
               </ion-thumbnail>
               <h2>{{item.Product.product_name}}</h2>
               <p innerHTML="{{item.Product.product_description}}"></p>
               <h2 class="price">${{item.Product.price}}</h2>
-              <button ion-button color="secondary" > <ion-icon name="cart"></ion-icon>Add to cart</button>
-              <button ion-button color="danger" > <ion-icon name="trash"></ion-icon>Remove</button>
-            </ion-item>
+              <button ion-button class="btn-dark" > <ion-icon name="cart"></ion-icon>Add to cart</button>
+              <button ion-button class="btn-primary" > <ion-icon name="trash"></ion-icon>Remove</button>
+            </ion-item> -->
+            <ion-item class="like-item">
+                <ion-thumbnail item-start>
+                  <img  src="assets/img/like-a.jpg" alt="">
+                </ion-thumbnail>
+                <h2>Angelina K</h2>
+                <p><span>Like</span> <span class="active">Follow</span></p>
+              </ion-item>
           </ion-card>
        
 

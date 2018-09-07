@@ -42,9 +42,9 @@
     <h2>{{product.Product.product_name}}</h2>
     <p>{{this.strip(this.br2nl(product.Product.product_description))}}</p>
     <h2 class="price">$ {{product.Product.price}}</h2>
-    <button ion-button  color="secondary">
+    <button ion-button  class="btn-dark">
       <ion-icon name="cart"></ion-icon> Buy It</button>
-    <button ion-button (click)="removeItem(product.Cart.id)" color="danger">
+    <button ion-button (click)="removeItem(product.Cart.id)" class="btn-primary">
       <ion-icon name="trash"></ion-icon> Remove</button>
   </ion-item>
 </ion-card>

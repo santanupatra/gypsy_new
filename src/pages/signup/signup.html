@@ -40,7 +40,7 @@
 			<p *ngIf="!rForm.controls['conf_password'].valid && rForm.controls['conf_password'].touched" ion-text color="danger">Confirm Password is required </p>
 			<p *ngIf="!passwordmatch" ion-text color="danger">Password and Confirm password not match </p>
 			
-			<button ion-button color="danger" [disabled]="!rForm.valid || !passwordmatch || !isValidEmail || !checkEmailExist" (click)="signup(rForm.value)" block>Sign up</button>
+			<button ion-button class="btn-primary" [disabled]="!rForm.valid || !passwordmatch || !isValidEmail || !checkEmailExist" (click)="signup(rForm.value)" block>Sign up</button>
 			<!-- <button ion-button (click)="onSignup(signupForm)" type="submit" block>Create</button> -->
 			<p class="gray-text">Clicking Sign up button you are agree to our terms & conditions</p>
 		</ion-list>
@@ -69,7 +69,7 @@
 			</ion-col>
 		</ion-row> -->
 	
-		<div style="padding-top:4.5rem !important;">
+		<div style="padding-top:2.5rem !important;">
 			<p class="acess" text-center>Already have account?
 				<span class="guest" (click)="onSignin()">Login</span>
 			</p>
