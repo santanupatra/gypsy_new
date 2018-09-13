@@ -1,5 +1,5 @@
 import { Component,ViewChild } from '@angular/core';
-import { Platform,Nav,MenuController } from 'ionic-angular';
+import { Platform,Nav,MenuController, LoadingController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -26,6 +26,7 @@ export class MyApp {
   user_image:any;
   categoryList:any;
   image_url:any;
+  user_id:any;
   constructor(
     platform: Platform,
 
@@ -33,30 +34,31 @@ export class MyApp {
     public api: ApiProvider,
     private service: ServiceProvider,
     public menuCtrl: MenuController,
+    public loadingCtrl:LoadingController, 
     statusBar: StatusBar,
     splashScreen: SplashScreen, 
     private AuthService: AuthProvider) {
+      this.user_id = AuthService.getuserid();
+      platform.ready().then(() => {
+          // Okay, so the platform is ready and our plugins are available.
+          // Here you can do any higher level native things you might need.
 
-  platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
 
+          events.subscribe('hideFooter', (data) => {
+            this.footerIsHidden = data.isHidden;
+          })
 
-      events.subscribe('hideFooter', (data) => {
-        this.footerIsHidden = data.isHidden;
-      })
-
-      console.log(AuthService.getuserid());      
-      if( AuthService.getuserid() ){
-        this.rootPage = 'HomePage';
-      }else{
-        events.publish('hideFooter', {isHidden: true});
-        this.rootPage = 'LoginPage';
-      }
-      statusBar.styleDefault();
-      splashScreen.hide();
-      this.getCategorylist();
-  });
+          console.log(AuthService.getuserid());      
+          if( AuthService.getuserid() ){
+            this.rootPage = 'HomePage';
+          }else{
+            events.publish('hideFooter', {isHidden: true});
+            this.rootPage = 'LoginPage';
+          }
+          statusBar.styleDefault();
+          splashScreen.hide();
+          this.getCategorylist();
+      });
 
 
 
@@ -120,6 +122,28 @@ openPage(page){
 }
 productList(id){
   this.nav.push("ProductListPage", {id:id});
+}
+
+goFollow(id, index){
+  let loading = this.loadingCtrl.create({
+    spinner: 'show',
+    content: 'Loading...',
+    duration: 3000
+  });
+  loading.present();
+  this.api.post('category_follow',{'user_id':this.user_id, "category_id":id}).subscribe((response : any)  => {
+    console.log(response);
+    if(response.Ack === 1){   
+      loading.dismiss();  
+      this.categoryList[index].Follow = response.follow; 
+    }
+    else{
+      loading.dismiss();
+      this.categoryList[index].Follow = response.follow; 
+    }
+  }, err => {
+    this.service.popup('Alert', 'Error');
+  });
 }
 
 

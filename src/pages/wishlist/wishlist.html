@@ -89,104 +89,17 @@
     <ion-list *ngSwitchCase="'likes'"  class="lisk-list">
 
         <ion-card *ngFor="let item of likelist">
-            <!-- <ion-item>
+           <ion-item>
               <ion-thumbnail item-start>
-                <img  src="assets/img/like-a.jpg" alt="">
+                <img  src="{{item.ProductImage.originalpath}}" alt="">
               </ion-thumbnail>
               <h2>{{item.Product.product_name}}</h2>
               <p innerHTML="{{item.Product.product_description}}"></p>
               <h2 class="price">${{item.Product.price}}</h2>
               <button ion-button class="btn-dark" > <ion-icon name="cart"></ion-icon>Add to cart</button>
               <button ion-button class="btn-primary" > <ion-icon name="trash"></ion-icon>Remove</button>
-            </ion-item> -->
-            <ion-item class="like-item">
-                <ion-thumbnail item-start>
-                  <img  src="assets/img/like-a.jpg" alt="">
-                </ion-thumbnail>
-                <h2>Angelina K</h2>
-                <p><span>Like</span> <span class="active">Follow</span></p>
-              </ion-item>
+            </ion-item> 
           </ion-card>
-       
-
-        <!-- <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/img/like-b.jpg" alt="">
-          </ion-avatar>
-          <h2 class="person-name">Angelina K</h2>
-          <div class="l-f-area">
-            <span item-start>Like</span>
-            <span item-start>Follow</span>
-          </div>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/img/like-c.jpg" alt="">
-          </ion-avatar>
-          <h2 class="person-name">Angelina K</h2>
-          <div class="l-f-area">
-            <span item-start>Like</span>
-            <span item-start>Follow</span>
-          </div>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/img/like-d.jpg" alt="">
-          </ion-avatar>
-          <h2 class="person-name">Angelina K</h2>
-          <div class="l-f-area">
-            <span item-start>Like</span>
-            <span item-start>Follow</span>
-          </div>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/img/like-e.jpg" alt="">
-          </ion-avatar>
-          <h2 class="person-name">Angelina K</h2>
-          <div class="l-f-area">
-            <span item-start>Like</span>
-            <span item-start>Follow</span>
-          </div>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/img/like-f.jpg" alt="">
-          </ion-avatar>
-          <h2 class="person-name">Angelina K</h2>
-          <div class="l-f-area">
-            <span item-start>Like</span>
-            <span item-start>Follow</span>
-          </div>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/img/like-g.jpg" alt="">
-          </ion-avatar>
-          <h2 class="person-name">Angelina K</h2>
-          <div class="l-f-area">
-            <span item-start>Like</span>
-            <span item-start>Follow</span>
-          </div>
-        </ion-item>
-
-        <ion-item>
-          <ion-avatar item-start>
-            <img src="assets/img/like-b.jpg" alt="">
-          </ion-avatar>
-          <h2 class="person-name">Angelina K</h2>
-          <div class="l-f-area">
-            <span item-start>Like</span>
-            <span item-start>Follow</span>
-          </div>
-        </ion-item> -->
-
-
     </ion-list>
   </div>
 

@@ -7,11 +7,15 @@
 	</ion-header>
 	
 	<ion-content class="outer-content">
-		<ion-list class="left-menu" *ngFor="let category of categoryList">
-			<button ion-item menuClose (click)="productList(category.Category.id)">
-				<ion-icon item-start><img src="{{image_url}}{{category.CategoryImage[0].originalpath}}" alt=""></ion-icon> {{category.Category.category_name}}
+		<ion-list class="left-menu" *ngFor="let category of categoryList; index as i">
+			<button ion-item menuClose (click)="productList(category.Category.etsy_cat_id)">
+				<ion-icon item-start>
+          <img *ngIf="category.CategoryImage.length > 0" src="{{image_url}}{{category.CategoryImage[0].originalpath}}" alt="">
+          <img *ngIf="category.CategoryImage.length <= 0" src="assets/img/menu-icons/under.png" alt="">
+        </ion-icon> {{category.Category.category_name}}
 			</button>
-			<button ion-button outline class="follow">Follow</button>
+      <button ion-button outline class="follow" *ngIf="category.Follow.length <=0" (click)="goFollow(category.Category.id, i)">Follow</button>
+      <button ion-button outline class="follow" *ngIf="category.Follow.length >=1" (click)="goFollow(category.Category.id, i)">Following</button>
 		</ion-list>
 		
     </ion-content>
