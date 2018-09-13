@@ -30,6 +30,7 @@ export class DetailPage {
   like = false;
   productimages:any;
   imageurl:any;
+  currency:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -76,7 +77,7 @@ export class DetailPage {
         this.productDetails = response.product_details.Product;
         this.productimages= response.product_details.ProductImage;
         this.imageurl=response.image_url;
-
+      
         if(response.like >= 1){
           this.like = true;   
         }
@@ -140,5 +141,8 @@ export class DetailPage {
     });
   }
 
-
+  goToCartPage()
+  {
+    this.navCtrl.push('CartPage')
+  }
 }

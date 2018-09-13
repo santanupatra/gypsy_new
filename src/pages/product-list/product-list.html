@@ -18,13 +18,17 @@
   <ion-list *ngFor="let product of productList">
     <ion-card >
       <ion-item>
-        <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)">
+        <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)" *ngIf="product.ProductImage[0]">
           <img src="{{product.ProductImage[0].originalpath}}">
         </ion-thumbnail>
+
+        <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)" *ngIf="!product.ProductImage[0]">
+            <img src="assets/img/noimage.png">
+          </ion-thumbnail>
         <h2>{{product.Product.product_name}}</h2>
         <p innerHTML="dsfdfd"></p>
         <h2 class="price">${{product.Product.price}}</h2>
-        <button ion-button color="secondary"  > <ion-icon name="cart"></ion-icon>Add to cart</button>
+        <button ion-button color="secondary"  (click)="addToCart(product.Product.id)"> <ion-icon name="cart"></ion-icon>Add to cart</button>
        
       </ion-item>
     </ion-card>

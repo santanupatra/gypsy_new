@@ -5,6 +5,7 @@ import { IonicPage, NavController, NavParams,AlertController,MenuController,Even
 import { ApiProvider } from '../../providers/api/api';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ServiceProvider } from '../../providers/service/service';
+import { concat } from 'rxjs/observable/concat';
 
 /**
  * Generated class for the HomePage page.
@@ -25,6 +26,8 @@ export class HomePage {
   heart=false;
   like=false;
   user_id:any;
+  myInput:any;
+  showSearchbar:boolean=false;
 
   constructor(
     public navCtrl: NavController,
@@ -147,7 +150,25 @@ export class HomePage {
     });
   }
 
+  search(data)
+  {
+    this.navCtrl.push('SearchResultPage',{param:this.myInput})
+    console.log(this.myInput)
+    this.myInput='';
+    
+  }
 
-  
+  toggleSearchbar()
+  {
+    this.showSearchbar=!this.showSearchbar;
+  }
+
+  onCancel(ionchange)
+  {
+    this.showSearchbar = !this.showSearchbar;
+    
+        console.log('cancel');
+
+  }
 
 }
