@@ -39,15 +39,12 @@ export class WishlistPage {
       this.user_id = AuthService.getuserid();
       this.pet ="wishlist";
 
-  
-
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WishlistPage');
     this.mywhishList();
-    this.mylikelist();
+    //this.mylikelist();
   }
 
 
@@ -58,7 +55,7 @@ export class WishlistPage {
     if(response.Ack === 1){
       this.productList = response.wishlist_details;
       this.is_exist = 1;
-
+      this.likelist = response.likes;
     }else{
 			this.message = response.msg;
 			this.is_exist = 0;

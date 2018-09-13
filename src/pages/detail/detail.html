@@ -28,7 +28,7 @@
       <ion-card>
         <div class="card-pic-ban">
             <ion-slides pager >
-                <ion-slide  *ngFor="let item of productimages"><img  *ngIf="productimages.length != 0" src="{{imageurl+item.originalpath}}" alt="">
+                <ion-slide  *ngFor="let item of productimages"><img  *ngIf="productimages.length != 0" src="{{item.originalpath}}" alt="">
                   <img *ngIf="productimages.length == 0" src="assets/img/detail-ban.jpg"alt="">
               
                 </ion-slide></ion-slides>

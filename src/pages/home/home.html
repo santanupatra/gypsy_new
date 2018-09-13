@@ -38,7 +38,7 @@
         <ion-card-content>
           <ion-row>
             <ion-col class="pl-0 pr-0">
-              <ion-card-title>
+              <ion-card-title>                 
                   {{newarraival.product_name}}
               </ion-card-title>
               <div class="star-area">
@@ -91,12 +91,12 @@
     </ion-list-header>
     <div class="new-arrival">
       <ion-card *ngFor="let bseller of bestseller">
-        <img class="card-pic" src="{{image_url}}{{bseller.product_images.originalpath}}" (click)="gotoDetails(bseller.products.id)">
+        <img class="card-pic" src="{{bseller.product_images}}" (click)="gotoDetails(bseller.id)">
         <ion-card-content>
           <ion-row>
             <ion-col class="pl-0 pr-0">
               <ion-card-title>
-                 {{bseller.products.product_name}}
+                 {{bseller.product_name}}
               </ion-card-title>
               <div class="star-area">
                 <span>
@@ -109,7 +109,7 @@
     
                 <span class="rate">(4.5)</span>
               </div>
-              <p class="price">${{bseller.products.price}}</p>
+              <p class="price">${{bseller.price}}</p>
             </ion-col>
             <ion-col class="pl-0 pr-0">
               <div class="like-total">
@@ -139,6 +139,60 @@
       </ion-card>
     
     </div>
+
+    <ion-list-header class="item item-ios list-header list-header-ios">
+      product recommendation
+     </ion-list-header>
+     <div class="new-arrival">
+       <ion-card *ngFor="let bseller of bestseller">
+         <img class="card-pic" src="{{bseller.product_images}}" (click)="gotoDetails(bseller.id)">
+         <ion-card-content>
+           <ion-row>
+             <ion-col class="pl-0 pr-0">
+               <ion-card-title>
+                  {{bseller.product_name}}
+               </ion-card-title>
+               <div class="star-area">
+                 <span>
+                   <ion-icon name="star"></ion-icon>
+                   <ion-icon name="star"></ion-icon>
+                   <ion-icon name="star"></ion-icon>
+                   <ion-icon name="star"></ion-icon>
+                   <ion-icon name="star-half"></ion-icon>
+                 </span>
+     
+                 <span class="rate">(4.5)</span>
+               </div>
+               <p class="price">${{bseller.price}}</p>
+             </ion-col>
+             <ion-col class="pl-0 pr-0">
+               <div class="like-total">
+                 <div class="like-area">
+                   <button ion-button>
+                     <img src="assets/img/thumb-b.png" alt="">
+                     <span class="like-nmbr">(139)</span>
+                   </button>
+                   <h3>Like</h3>
+                 </div>
+                 <div class="like-area">
+                   <button ion-button>
+                     <img src="assets/img/heart-b.png" alt="">
+                     <span class="like-nmbr">(38)</span>
+                   </button>
+                   <h3>WishList</h3>
+                 </div>
+               </div>
+               <div class="social-area">
+                 <img src="assets/img/fb-icon.png" alt="">
+                 <img src="assets/img/twtr-icon.png" alt="">
+                 <img src="assets/img/pint-icon.png" alt="">
+               </div>
+             </ion-col>
+           </ion-row>
+         </ion-card-content>
+       </ion-card>
+     
+     </div>
 
   </ion-list>
   
