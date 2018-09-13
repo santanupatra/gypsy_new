@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthProvider } from '../providers/auth/auth';
 import { ApiProvider } from '../providers/api/api';
 import { ServiceProvider } from '../providers/service/service';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { ServiceProvider } from '../providers/service/service';
     AuthProvider,
     ApiProvider,
     ServiceProvider,
+    InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

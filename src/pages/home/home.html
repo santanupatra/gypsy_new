@@ -14,11 +14,29 @@
       <img src="assets/img/home-logo.png" alt="Ionic logo">
     </ion-title>
      <ion-buttons end>
-       <button ion-button icon-only>
-        <ion-icon name="search"></ion-icon>
-       </button>
-      <button ion-button icon-only>
-        <ion-icon name="md-cart" (click)="gotoviewCart()"></ion-icon>
+      <!-- <button ion-button icon-only *ngIf="showSearchbar">
+        <ion-icon name="search" ></ion-icon> -->
+  
+     
+  <ion-searchbar *ngIf="showSearchbar" 
+  cancelButtonText="cancel" 
+  [showCancelButton]="true" 
+  [(ngModel)]="myInput" 
+  (search)="search($event)" 
+  (ionCancel)="onCancel($event)"> 
+</ion-searchbar>
+<!-- </button> -->
+
+<button ion-button icon-only *ngIf="!showSearchbar" (click)="toggleSearchbar()">
+    <ion-icon name="search"></ion-icon></button>
+
+
+
+
+        
+      
+      <button ion-button icon-only (click)="gotoviewCart()">
+        <ion-icon name="md-cart" ></ion-icon>
       </button>
     </ion-buttons> 
   </ion-navbar>

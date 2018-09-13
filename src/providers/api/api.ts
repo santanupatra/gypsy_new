@@ -45,6 +45,16 @@ export class ApiProvider {
     });
 
   }
+
+  // searchlist(link,data){
+  //   console.log(data);
+  //   return this.http.post(apiUrl+'/'+link, data).map(response => {
+     
+  //         return response;
+  //     });
+  
+  //   }
+
   
 }
 
