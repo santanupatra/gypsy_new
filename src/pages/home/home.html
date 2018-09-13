@@ -13,12 +13,12 @@
     <ion-title>
       <img src="assets/img/home-logo.png" alt="Ionic logo">
     </ion-title>
-     <ion-buttons end>
+     <ion-buttons end class="search" >
       <!-- <button ion-button icon-only *ngIf="showSearchbar">
         <ion-icon name="search" ></ion-icon> -->
   
      
-  <ion-searchbar *ngIf="showSearchbar" 
+  <ion-searchbar   *ngIf="showSearchbar" 
   cancelButtonText="cancel" 
   [showCancelButton]="true" 
   [(ngModel)]="myInput" 
