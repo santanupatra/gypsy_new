@@ -20,6 +20,7 @@ export class ProductListPage {
   cid:any;
   productList:any;
   image_url: any;
+  user_id:any;
 
   constructor(
     public navCtrl: NavController,
@@ -31,6 +32,8 @@ export class ProductListPage {
   ) {
     this.cid = this.navParams.get('id');
     this.getProductlist(this.cid);
+
+    this.user_id = AuthService.getuserid();
   }
 
   ionViewDidLoad() {
@@ -51,6 +54,28 @@ export class ProductListPage {
     });
     
       }
+
+
+ addToCart(productId)
+{
+  console.log(productId);
+  this.api.post('addcart',{id:this.user_id,product_id:productId}).subscribe((response : any)  => {
+    console.log(response);
+
+    if(response.Ack == 1){
+     
+      this.service.popup('success',response.msg);
+
+    }
+    else{
+      this.service.popup('Sorry','Please try again later');
+    
+    }
+    }, err => {
+      this.service.popup('Alert', 'Something went wrong');
+  });
+}
+
 
       gotoDetails(id) {   
         this.navCtrl.push('DetailPage', {id:id});

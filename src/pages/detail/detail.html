@@ -12,8 +12,8 @@
     </button>
     <ion-title> {{productDetails.product_name}} </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="presentPopover($event)">
-        <ion-icon name="search"></ion-icon>
+      <button ion-button icon-only (click)="goToCartPage()">
+        <!-- <ion-icon name="search"></ion-icon> -->
         <ion-icon name="cart"></ion-icon>
       </button>
     </ion-buttons>
@@ -56,7 +56,7 @@
       
                 <span class="rate">(4.5)</span>
               </div>
-              <p class="price-b">${{productDetails.price}}</p>
+              <p class="price-b">{{productDetails.currency_code}}{{productDetails.price}}</p>
             </ion-col>
             <ion-col col-5>
               <div class="like-total-b">
@@ -118,7 +118,7 @@
   
                   <span class="rate">(4.5)</span>
                 </div>
-                <p class="price">${{pro.Product.price}}</p>
+                <p class="price">{{pro.Product.price}}</p>
               </ion-col>
               <ion-col class="pl-0 pr-0">
                 <div class="like-total">

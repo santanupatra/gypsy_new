@@ -32,11 +32,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title> My Activity </ion-title>
-    <ion-buttons end>
+    <!-- <ion-buttons end>
       <button ion-button icon-only >
         <ion-icon name="heart"></ion-icon>
       </button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-navbar>
 
   <!-- <ion-toolbar no-border-top>    
@@ -70,7 +70,7 @@
     <ion-list *ngSwitchCase="'wishlist'">
       <ion-card *ngFor="let productlist of productList">
         <ion-item>
-          <ion-thumbnail item-start>
+          <ion-thumbnail item-start (click)="gotoDetails(productlist.Product.id)">
             <img src="{{productlist.ProductImage}}">
           </ion-thumbnail>
           <h2>{{productlist.Product.product_name}}</h2>
@@ -90,14 +90,14 @@
 
         <ion-card *ngFor="let item of likelist">
            <ion-item>
-              <ion-thumbnail item-start>
+              <ion-thumbnail item-start  (click)="gotoDetails(item.Product.id)">
                 <img  src="{{item.ProductImage.originalpath}}" alt="">
               </ion-thumbnail>
               <h2>{{item.Product.product_name}}</h2>
               <p innerHTML="{{item.Product.product_description}}"></p>
               <h2 class="price">${{item.Product.price}}</h2>
-              <button ion-button class="btn-dark" > <ion-icon name="cart"></ion-icon>Add to cart</button>
-              <button ion-button class="btn-primary" > <ion-icon name="trash"></ion-icon>Remove</button>
+              <button ion-button class="btn-dark" (click)="addtoCart(item.Product.id)"> <ion-icon name="cart"></ion-icon>Add to cart</button>
+              <button ion-button class="btn-primary" (click)="deletewishListFromLikes(item.Like.id)"> <ion-icon name="trash"></ion-icon>Remove</button>
             </ion-item> 
           </ion-card>
     </ion-list>

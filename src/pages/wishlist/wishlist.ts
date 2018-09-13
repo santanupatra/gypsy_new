@@ -125,6 +125,9 @@ export class WishlistPage {
     
   }
 
+
+  
+
   // presentConfirm() {
   //   let alert = this.alertCtrl.create({
   //     title: 'Confirm Remove',
@@ -153,16 +156,21 @@ export class WishlistPage {
     this.api.post('addcart',{id:this.user_id,product_id:proid}).subscribe((response : any)  => {
       console.log(response);
       if(response.Ack === 1){
-        this.navCtrl.push("CartPage");
+        // this.navCtrl.push("CartPage");
+        this.service.popup('success',response.msg);
   
       }else{
-       
+        this.service.popup('Sorry','Please try again later');
       }
       }, err => {
       	this.service.popup('Alert', 'Something is Wrong');
       });
    }
   
-
+   gotoDetails(productId)
+   {
+     this.navCtrl.push('DetailPage', {id:productId});
+   }
+   
 
 }

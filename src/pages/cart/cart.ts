@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { ApiProvider } from '../../providers/api/api';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ServiceProvider } from '../../providers/service/service';
-
+import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser';
 
 
 /**
@@ -24,13 +24,33 @@ export class CartPage {
 	message: any;
 	url:any;
 
+
+	options : InAppBrowserOptions = {
+		location : 'yes',//Or 'no' 
+		hidden : 'no', //Or  'yes'
+		clearcache : 'yes',
+		clearsessioncache : 'yes',
+		zoom : 'yes',//Android only ,shows browser zoom controls 
+		hardwareback : 'yes',
+		mediaPlaybackRequiresUserAction : 'no',
+		shouldPauseOnSuspend : 'no', //Android only 
+		closebuttoncaption : 'Close', //iOS only
+		disallowoverscroll : 'no', //iOS only 
+		toolbar : 'yes', //iOS only 
+		enableViewportScale : 'no', //iOS only 
+		allowInlineMediaPlayback : 'no',//iOS only 
+		presentationstyle : 'pagesheet',//iOS only 
+		fullscreen : 'yes',//Windows only    
+	};
+
 	constructor(
 		public navCtrl: NavController, 
 		public navParams: NavParams,
 		public api: ApiProvider,
 		public alertCtrl: AlertController,
 		private AuthService: AuthProvider,
-		private service: ServiceProvider  ) {
+		private service: ServiceProvider,
+		private theInAppBrowser: InAppBrowser, ) {
 
 		this.user_id = AuthService.getuserid();
 		this.url = "http://111.93.169.90/";
@@ -107,5 +127,14 @@ export class CartPage {
 		});
 		alert.present();
 	}
+
+
+	
+	public openWithInAppBrowser(url : string){
+		let target = "_blank";
+		this.theInAppBrowser.create(url,target,this.options);
+	}
+	
+
 
 }

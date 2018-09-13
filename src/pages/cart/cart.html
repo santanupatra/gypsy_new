@@ -36,17 +36,25 @@
   <ion-item>
     <ion-thumbnail item-start>
        
-      <img src="{{url}}{{product.ProductImage}}">
+      <img src="{{product.ProductImage}}" alt="">
     
     </ion-thumbnail>
+    
     <h2>{{product.Product.product_name}}</h2>
     <p>{{this.strip(this.br2nl(product.Product.product_description))}}</p>
     <h2 class="price">$ {{product.Product.price}}</h2>
-    <button ion-button  class="btn-dark">
-      <ion-icon name="cart"></ion-icon> Buy It</button>
-    <button ion-button (click)="removeItem(product.Cart.id)" class="btn-primary">
+     <button ion-button  class="btn-dark" (click)="openWithInAppBrowser(product.Product.url)">
+      <ion-icon name="cart" ></ion-icon> Buy It</button>
+    
+      
+  
+
+    
+      <button ion-button (click)="removeItem(product.Cart.id)" class="btn-primary">
       <ion-icon name="trash"></ion-icon> Remove</button>
   </ion-item>
+
+  
 </ion-card>
 
 </div>
