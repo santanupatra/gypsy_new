@@ -25,6 +25,7 @@ export class HomePage {
   heart=false;
   like=false;
   user_id:any;
+  follow_products:any;
 
   constructor(
     public navCtrl: NavController,
@@ -40,6 +41,7 @@ export class HomePage {
     this.events.publish('hideFooter', { isHidden: false});
     this.newArraival();
     this.bestSeller();
+    this.recommendation();
   }
 
   ionViewDidLoad() {
@@ -93,6 +95,18 @@ export class HomePage {
         });
     
       }
+  recommendation(){
+    this.api.post('category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
+      
+        if(response.Ack === 1){        
+          this.follow_products = response.products;          
+        }else{
+        
+      }
+      }, err => {
+      this.service.popup('Alert', 'Already Registered');
+      });
+  }
 
   gotoviewCart() {
    // alert(111);

@@ -8,7 +8,7 @@
 	
 	<ion-content class="outer-content">
 		<ion-list class="left-menu" *ngFor="let category of categoryList; index as i">
-			<button ion-item menuClose (click)="productList(category.Category.etsy_cat_id)">
+			<button ion-item menuClose (click)="productList(category.Category.id)">
 				<ion-icon item-start>
           <img *ngIf="category.CategoryImage.length > 0" src="{{image_url}}{{category.CategoryImage[0].originalpath}}" alt="">
           <img *ngIf="category.CategoryImage.length <= 0" src="assets/img/menu-icons/under.png" alt="">

@@ -144,13 +144,13 @@
       product recommendation
      </ion-list-header>
      <div class="new-arrival">
-       <ion-card *ngFor="let bseller of bestseller">
-         <img class="card-pic" src="{{bseller.product_images}}" (click)="gotoDetails(bseller.id)">
+       <ion-card *ngFor="let product of follow_products">
+         <img class="card-pic" src="{{product.image}}" (click)="gotoDetails(product.id)">
          <ion-card-content>
            <ion-row>
              <ion-col class="pl-0 pr-0">
                <ion-card-title>
-                  {{bseller.product_name}}
+                  {{product.product_name}}
                </ion-card-title>
                <div class="star-area">
                  <span>
@@ -163,7 +163,7 @@
      
                  <span class="rate">(4.5)</span>
                </div>
-               <p class="price">${{bseller.price}}</p>
+               <p class="price">${{product.price}}</p>
              </ion-col>
              <ion-col class="pl-0 pr-0">
                <div class="like-total">
