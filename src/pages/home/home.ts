@@ -170,6 +170,7 @@ export class HomePage {
     this.navCtrl.push('SearchResultPage',{param:this.myInput})
     console.log(this.myInput)
     this.myInput='';
+    this.showSearchbar = !this.showSearchbar;
     
   }
 
