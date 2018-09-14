@@ -93,9 +93,9 @@
                 </div>
               </div>
               <div class="social-area">
-               <a href="{{newarraival.fb_link}}" ><img src="assets/img/fb-icon.png" alt=""></a>
-               <a href="{{newarraival.twitter_link}}">  <img src="assets/img/twtr-icon.png" alt=""></a>
-               <a href="{{newarraival.printerest_link}}"> <img src="assets/img/pint-icon.png" alt=""></a>
+               <img src="assets/img/fb-icon.png" alt="" (click)="openWithInAppBrowser(newarraival.fb_link)">
+               <img src="assets/img/twtr-icon.png" alt="" (click)="openWithInAppBrowser(newarraival.twitter_link)">
+               <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(newarraival.printerest_link)">
               </div>
             </ion-col>
           </ion-row>
