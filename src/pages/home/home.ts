@@ -6,6 +6,7 @@ import { ApiProvider } from '../../providers/api/api';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ServiceProvider } from '../../providers/service/service';
 import { concat } from 'rxjs/observable/concat';
+import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the HomePage page.
@@ -29,6 +30,25 @@ export class HomePage {
   follow_products:any;
   myInput:any;
   showSearchbar:boolean=false;
+  
+
+  options : InAppBrowserOptions = {
+		location : 'yes',//Or 'no' 
+		hidden : 'no', //Or  'yes'
+		clearcache : 'yes',
+		clearsessioncache : 'yes',
+		zoom : 'yes',//Android only ,shows browser zoom controls 
+		hardwareback : 'yes',
+		mediaPlaybackRequiresUserAction : 'no',
+		shouldPauseOnSuspend : 'no', //Android only 
+		closebuttoncaption : 'Close', //iOS only
+		disallowoverscroll : 'no', //iOS only 
+		toolbar : 'yes', //iOS only 
+		enableViewportScale : 'no', //iOS only 
+		allowInlineMediaPlayback : 'no',//iOS only 
+		presentationstyle : 'pagesheet',//iOS only 
+		fullscreen : 'yes',//Windows only    
+	};
 
 
   constructor(
@@ -40,6 +60,7 @@ export class HomePage {
     private service: ServiceProvider,
     private events: Events,
     private loadingCtrl: LoadingController,
+    private theInAppBrowser: InAppBrowser,
   ) {
     this.user_id = AuthService.getuserid();
     this.events.publish('hideFooter', { isHidden: false});
@@ -186,5 +207,10 @@ export class HomePage {
         console.log('cancel');
 
   }
+
+  public openWithInAppBrowser(url : string){
+		let target = "_blank";
+		this.theInAppBrowser.create(url,target,this.options);
+	}
 
 }
