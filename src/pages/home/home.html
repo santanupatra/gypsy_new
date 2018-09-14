@@ -29,16 +29,16 @@
 
 <button ion-button icon-only *ngIf="!showSearchbar" (click)="toggleSearchbar()">
     <ion-icon name="search"></ion-icon></button>
-
-
-
-
-        
-      
-      <button ion-button icon-only (click)="gotoviewCart()">
-        <ion-icon name="md-cart" ></ion-icon>
-      </button>
+     
     </ion-buttons> 
+
+    <ion-buttons end class="position-rel">
+        <div class="cart-amnt">{{noofcart}}</div>
+        <button ion-button icon-only (click)="gotoviewCart()">
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-buttons>
+
   </ion-navbar>
 </ion-header>
 
