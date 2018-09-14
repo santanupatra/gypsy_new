@@ -26,7 +26,7 @@ export class WishlistPage {
   message:any;
   is_exist:any;
   likelist:any;
-  
+  noofcart:any;
 
 
   constructor(public navCtrl: NavController,
@@ -38,6 +38,7 @@ export class WishlistPage {
        // alert(AuthService.getuserid());
       this.user_id = AuthService.getuserid();
       this.pet ="wishlist";
+      this.cartcount();
 
   }
 
@@ -172,5 +173,31 @@ export class WishlistPage {
      this.navCtrl.push('DetailPage', {id:productId});
    }
    
+   gotoviewCart() {
+   this.navCtrl.push("CartPage");
+   }
 
+
+  cartcount()
+  {
+    this.api.post('noOfCart',{user_id:this.user_id}).subscribe((response : any)  => {
+      console.log(response);
+  
+      if(response.Ack == 1){
+    
+        this.noofcart=response.no_cart;
+        
+      }else{
+        this.service.popup('', 'Something went wrong');
+        
+      }
+      }, err => {
+        this.service.popup('Alert', 'Something went wrong');
+    });
+  }
+
+  goToCartPage()
+  {
+    this.navCtrl.push('CartPage')
+  }
 }

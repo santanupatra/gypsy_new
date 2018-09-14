@@ -28,6 +28,7 @@ export class HomePage {
   user_id:any;
   follow_products:any;
   myInput:any;
+  noofcart:any;
   showSearchbar:boolean=false;
 
 
@@ -46,6 +47,7 @@ export class HomePage {
     this.newArraival();
     this.bestSeller();
     this.recommendation();
+    this.cartcount();
   }
 
   ionViewDidLoad() {
@@ -185,6 +187,24 @@ export class HomePage {
     
         console.log('cancel');
 
+  }
+
+  cartcount()
+  {
+    this.api.post('noOfCart',{user_id:this.user_id}).subscribe((response : any)  => {
+      console.log(response);
+  
+      if(response.Ack == 1){
+    
+        this.noofcart=response.no_cart;
+        
+      }else{
+       
+        
+      }
+      }, err => {
+        this.service.popup('Alert', 'Something went wrong');
+    });
   }
 
 }

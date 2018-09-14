@@ -17,7 +17,7 @@ page-detail {
 .star-area .rate{ font-size: 1.3rem;}
 .price{ color: #c60626; font-weight: 600; font-size: 1.6rem;}
 .price-b{color: #555; font-weight: 600; font-size: 1.8rem;}
-.button{ padding: 0; margin: 0; background: none; box-shadow: none; height: auto;}
+.button{ padding: 0; margin: 0;background: none; box-shadow: none;}
 .button:hover:not(.disable-hover){ background-color: transparent; }
 .button .button-inner img{ padding: 0 0.2rem 0 0; width: 21px; }
 .like-nmbr{ color: #999999; font-size: 1.2rem;}
@@ -33,4 +33,50 @@ page-detail {
 .pro-des-tittle{ color: #222222; font-weight: 500;}
 .pro-des{ color: #4f4f4f; padding-bottom: 1rem;}
 
+.rating
+{
+    padding-left: 90px;
+    color: green
+}
+
+.rating-part{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999999999;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rating-area{
+    padding: 30px 15px;
+    border-radius: 10px;
+    &.card .item.item-block .item-inner{
+        border-bottom: #eee 1px solid !important;
+    }
+    ul{
+        padding: 0;
+        text-align: center;
+        li{
+            display: inline;
+            border: 0px;
+            background: none;
+            padding: 5px 10px;
+            font-size: 20px;
+            color: rgb(60, 150, 60);
+        }
+    }
+}
+
+.submitbtn
+{
+    background-color: gray;
+
+}
+
+.position-rel{ position: relative;}
+.cart-amnt{ background-color: #555; position: absolute; width: 18px; height: 18px; z-index: 100; border-radius: 50%; top: -4px; right: 0; text-align: center; color: #ffffff;}
 }
