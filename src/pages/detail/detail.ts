@@ -23,6 +23,7 @@ export class DetailPage {
   user_id:any;
   prolikeList:any;
   url:any;
+  israting:any;
   //productDetails:any;
   productDetails: any = {};
   prolikeCount:any;
@@ -31,6 +32,12 @@ export class DetailPage {
   productimages:any;
   imageurl:any;
   currency:any;
+  isShow:any;
+  product:any;
+  rate:any;
+  ratingArray:any;
+  noofcart:any;
+  starrating:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -46,6 +53,8 @@ export class DetailPage {
     this.user_id = AuthService.getuserid();
     this.alsolikeList(this.id);
     this.detailsProduct(this.id);
+    this.cartcount();
+
   }
 
   ionViewDidLoad() {
@@ -74,6 +83,21 @@ export class DetailPage {
     this.api.post('productdetails',{product_id:id, user_id:this.user_id}).subscribe((response : any)  => {
       console.log(response);
       if(response.Ack === 1){
+        this.ratingArray=response.product_details.Rating
+        console.log(this.ratingArray)
+        if (this.ratingArray.length>0)
+        {
+          this.israting=1;
+          console.log(this.ratingArray.length)
+          this.starrating=response.product_details.Rating[0].Rating[0].average
+        }
+        else
+        {
+          console.log(this.ratingArray.length)
+          this.israting=0;
+        }
+        
+        
         this.productDetails = response.product_details.Product;
         this.productimages= response.product_details.ProductImage;
         this.imageurl=response.image_url;
@@ -145,4 +169,57 @@ export class DetailPage {
   {
     this.navCtrl.push('CartPage')
   }
+
+  show(prodId)
+  {
+    this.isShow =1;
+    console.log(prodId);
+    this.product=prodId
+  }
+
+  hide() {
+    this.isShow =0;
+  }
+
+  submit()
+  
+  {
+    console.log(this.rate);
+    console.log(this.product)
+    this.isShow =0;
+    this.api.post('addrating',{user_id:this.user_id, product_id:this.product, rating:this.rate}).subscribe((response : any)  => {
+      console.log(response);
+  
+      if(response.Ack == 1){
+    
+        this.service.popup('',response.msg);
+        this.detailsProduct(this.product)
+        
+      }else{
+       
+        this.service.popup('',response.msg);
+      }
+      }, err => {
+        this.service.popup('Alert', 'Something went wrong');
+    });
+  }
+
+  cartcount()
+  {
+    this.api.post('noOfCart',{user_id:this.user_id}).subscribe((response : any)  => {
+      console.log(response);
+  
+      if(response.Ack == 1){
+    
+        this.noofcart=response.no_cart;
+        
+      }else{
+        this.service.popup('', 'Something went wrong');
+        
+      }
+      }, err => {
+        this.service.popup('Alert', 'Something went wrong');
+    });
+  }
+
 }

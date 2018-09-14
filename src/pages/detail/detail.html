@@ -11,15 +11,40 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title> {{productDetails.product_name}} </ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="goToCartPage()">
-        <!-- <ion-icon name="search"></ion-icon> -->
-        <ion-icon name="cart"></ion-icon>
-      </button>
-    </ion-buttons>
+    
+      
+          <ion-buttons end class="position-rel">
+              <div class="cart-amnt">{{noofcart}}</div>
+              <button ion-button icon-only (click)="goToCartPage()">
+                <ion-icon name="cart"></ion-icon>
+              </button>
+            </ion-buttons>
+      
   </ion-navbar>
 </ion-header>
-
+<div class="rating-part" *ngIf ="isShow ==1">
+    <ion-card class="rating-area" >
+               <rating [(ngModel)]="rate"
+        readOnly="false" 
+        max="5" 
+        emptyStarIconName="star-outline" 
+        halfStarIconName="star-half" 
+        starIconName="star" 
+        nullable="false"
+        
+        > 
+  </rating>
+  <ion-row>
+    <ion-col col-6>
+      <button ion-button block  class="submitbtn" (click)="submit()">Submit</button>
+    </ion-col>
+    <ion-col col-6>
+        <button ion-button  block  class="submitbtn" (click)='hide()'>Cancel</button>
+      
+      </ion-col>
+  </ion-row>
+  </ion-card>
+</div>
 
 <ion-content>
 
@@ -45,17 +70,77 @@
                 {{productDetails.product_name}}
                    <!-- Drone with 18 Megapixel.... -->
               </ion-card-title>
-              <div class="star-area">
-                <span>
+              <!-- <div *ngIf="israting==1">{{starrating}}</div> -->
+              
+              
+              <div class="star-area" *ngIf="israting==0">
+                  <span>
+                    <ion-icon name="ios-star-outline"></ion-icon>
+                    <ion-icon name="ios-star-outline"></ion-icon>
+                    <ion-icon name="ios-star-outline"></ion-icon>
+                    <ion-icon name="ios-star-outline"></ion-icon>
+                    <ion-icon name="ios-star-outline"></ion-icon>
+                  </span>
+                  </div>
+
+
+              <div class="star-area" *ngIf="israting==1">
+
+
+                  <span *ngIf="starrating==1">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="ios-star-outline"></ion-icon>
+                      <ion-icon name="ios-star-outline"></ion-icon>
+                      <ion-icon name="ios-star-outline"></ion-icon>
+                      <ion-icon name="ios-star-outline"></ion-icon>
+                    </span>
+
+
+                  <span *ngIf="starrating==2">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="ios-star-outline"></ion-icon>
+                      <ion-icon name="ios-star-outline"></ion-icon>
+                      <ion-icon name="ios-star-outline"></ion-icon>
+                    </span>
+
+                <span *ngIf="starrating==3">
                   <ion-icon name="star"></ion-icon>
                   <ion-icon name="star"></ion-icon>
                   <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star-half"></ion-icon>
+                  <ion-icon name="ios-star-outline"></ion-icon>
+                  <ion-icon name="ios-star-outline"></ion-icon>
                 </span>
+
+
+                <span *ngIf="starrating==4">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="ios-star-outline"></ion-icon>
+                  </span>
+                  
+
+                 <span *ngIf="starrating==5">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                    <ion-icon name="star"></ion-icon>
+                  </span>    
       
-                <span class="rate">(4.5)</span>
+                <span *ngIf="israting==1" class="rate">({{starrating}})</span>
               </div>
+
+
+
+
+
+
+
+
+              <button ion-button class="rating"  (click)="show(productDetails.id)" > Add Rating </button>
               <p class="price-b">{{productDetails.currency_code}}{{productDetails.price}}</p>
             </ion-col>
             <ion-col col-5>
@@ -118,6 +203,7 @@
   
                   <span class="rate">(4.5)</span>
                 </div>
+               
                 <p class="price">{{pro.Product.price}}</p>
               </ion-col>
               <ion-col class="pl-0 pr-0">

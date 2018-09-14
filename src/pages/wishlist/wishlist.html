@@ -37,6 +37,12 @@
         <ion-icon name="heart"></ion-icon>
       </button>
     </ion-buttons> -->
+    <ion-buttons end class="position-rel">
+        <div class="cart-amnt">{{noofcart}}</div>
+        <button ion-button icon-only (click)="goToCartPage()">
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 
   <!-- <ion-toolbar no-border-top>    
