@@ -11,7 +11,16 @@ page-home {
     .new-arrival .card:first-child{ margin-top: 0;}
     .new-arrival .card img{ padding: 1.5rem;}
     .card-pic{height: 200px; width: auto; margin: 0 auto;}
-    .new-arrival .card .card-content .row .col .card-title{ font-size: 1.5rem; font-weight: 600; margin:0; padding: 0 0 5px;}
+    .new-arrival .card .card-content .row .col .card-title{ 
+        font-size: 1.5rem; 
+        font-weight: 600; 
+        margin:0; 
+    
+        text-overflow: inherit;
+        white-space: nowrap;
+        overflow: inherit;
+    
+        }
     .star-area{width: auto;}
     .star-area .icon{ color: #f67401;}
     .star-area .rate{ font-size: 1.3rem;}

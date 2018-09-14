@@ -59,16 +59,24 @@
               <ion-card-title>                 
                   {{newarraival.product_name}}
               </ion-card-title>
+
+            
+
               <div class="star-area">
-                <span>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star-half"></ion-icon>
-                </span>
+                  <ion-icon *ngIf="newarraival.rating>=1" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating>=2" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating>=3" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating>=4" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating>=5" name="star"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating%1!=0" name="star-half"></ion-icon>
+                  
+                  <ion-icon *ngIf="newarraival.rating==0" name="star-outline"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating<=1" name="star-outline"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating<=2" name="star-outline"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating<=3" name="star-outline"></ion-icon>
+                  <ion-icon *ngIf="newarraival.rating<=4" name="star-outline"></ion-icon>
                 
-                <span class="rate">(4.5)</span>
+                <span class="rate">({{newarraival.rating}})</span>
               </div>
               <p class="price">${{newarraival.price}}</p>
             </ion-col>

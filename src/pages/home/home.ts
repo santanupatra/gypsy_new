@@ -85,7 +85,7 @@ export class HomePage {
   newArraival(){
     console.log(this.user_id);
     this.api.post('newarraival',{user_id:this.user_id}).subscribe((response : any)  => {
-    //console.log(response);
+    console.log(response);
    // console.log(response.products);
     if(response.ACK === 1){      
       this.newarraivalList = response.products;
