@@ -21,7 +21,7 @@
       <ion-card >
         <ion-item>
           <ion-thumbnail item-start (click)="gotoDetails(item.Product.id)" *ngIf="item.ProductImage[0]!=undefined">
-            <img src="{{item.ProductImage[0].originalpath}}">
+            <img src="{{imageurl+item.ProductImage[0].originalpath}}">
           </ion-thumbnail>
 
           <ion-thumbnail item-start (click)="gotoDetails(item.Product.id)" *ngIf="item.ProductImage[0]==undefined">

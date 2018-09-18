@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { ApiProvider } from '../../providers/api/api';
 import { ServiceProvider } from '../../providers/service/service';
 import { AuthProvider } from '../../providers/auth/auth';
+import { concat } from 'rxjs/observable/concat';
 /**
  * Generated class for the SearchResultPage page.
  *
@@ -20,11 +21,13 @@ export class SearchResultPage {
   searchkeyword:any;
 productlist:any;
 user_id:any;
+imageurl:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public api:ApiProvider,
     private service: ServiceProvider,
-    private AuthService: AuthProvider,) {
+    private AuthService: AuthProvider,
+    public loadingCtrl:LoadingController, ) {
     this.searchkeyword=navParams.get('param');
     console.log(this.searchkeyword);
     this.searchresult();
@@ -34,19 +37,30 @@ user_id:any;
 
 searchresult()
 {
+  let loading = this.loadingCtrl.create({
+    spinner: 'show',
+    content: 'Loading...',
+    // duration: 3000
+  });
+  loading.present();
+  console.log('parameter',this.searchkeyword)
   this.api.post('search',{keywords:this.searchkeyword}).subscribe((response : any)  => {
     console.log(response);
 
     if(response.ACK == 1){
+      loading.dismiss();
       this.productlist = response.products;
+      this.imageurl=response.image_url;
     
       console.log(this.productlist)
 
     }else{
+      loading.dismiss();
       this.productlist='';
     
     }
     }, err => {
+      loading.dismiss();
       this.service.popup('Alert', 'Something went wrong');
   });
 }

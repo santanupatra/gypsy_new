@@ -83,6 +83,7 @@ export class DetailPage {
     this.api.post('productdetails',{product_id:id, user_id:this.user_id}).subscribe((response : any)  => {
       console.log(response);
       if(response.Ack === 1){
+       
         this.ratingArray=response.product_details.Rating
         console.log(this.ratingArray)
         if (this.ratingArray.length>0)
@@ -184,6 +185,13 @@ export class DetailPage {
   submit()
   
   {
+
+    let loading = this.loadingCtrl.create({
+      spinner: 'show',
+      content: 'Loading...',
+      // duration: 3000
+    });
+    loading.present();
     console.log(this.rate);
     console.log(this.product)
     this.isShow =0;
@@ -192,14 +200,16 @@ export class DetailPage {
   
       if(response.Ack == 1){
     
+        loading.dismiss();
         this.service.popup('',response.msg);
         this.detailsProduct(this.product)
         
       }else{
-       
+        loading.dismiss();
         this.service.popup('',response.msg);
       }
       }, err => {
+        loading.dismiss();
         this.service.popup('Alert', 'Something went wrong');
     });
   }
