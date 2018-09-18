@@ -30,6 +30,11 @@ export class HomePage {
   follow_products:any;
   myInput:any;
   noofcart:any;
+  recentviewlist:any;
+  categoryList:any;
+  followinglist:any;
+  productmarketing:any;
+  
   showSearchbar:boolean=false;
   
 
@@ -69,6 +74,10 @@ export class HomePage {
     this.bestSeller();
     this.recommendation();
     this.cartcount();
+    this.recentView();
+   
+    this.productMarketing();
+    this.followlist();
   }
 
   ionViewDidLoad() {
@@ -80,6 +89,56 @@ export class HomePage {
   
    
     this.navCtrl.push('DetailPage', {id:id});
+  }
+
+  productMarketing(){
+    console.log(this.user_id);
+    this.api.post('category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
+    console.log('productMarketing',response);
+  
+    if(response.Ack === 1){      
+      this.productmarketing= response.products;
+      this.image_url = response.image_url;     
+
+    }else
+    {
+      this.productmarketing='';
+     
+    }
+    }, 
+    err => {
+    this.service.popup('Alert', 'Already Registered');
+    }
+  );
+
+  }
+
+
+  followlist(){
+    console.log(this.user_id);
+    this.api.post('userwise_category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
+    console.log('userwise_category_follow_list',response);
+  
+    if(response.Ack === 1){      
+      this.followinglist= response.category;
+      // this.image_url = response.image_url;     
+
+    }else
+    {
+      this.followinglist='';
+     
+    }
+    }, 
+    err => {
+    this.service.popup('Alert', 'Already Registered');
+    }
+  );
+
+  }
+  gotoproductlist(id)
+  {
+    console.log(id)
+    this.navCtrl.push('ProductListPage', {id:id});
   }
 
   newArraival(){
@@ -100,6 +159,26 @@ export class HomePage {
     });
 
   }
+
+  recentView(){
+    console.log(this.user_id);
+    this.api.post('recentview',{user_id:this.user_id}).subscribe((response : any)  => {
+    console.log(response);
+  
+    if(response.ACK === 1){      
+      this.recentviewlist = response.products;
+      this.image_url = response.image_url;     
+
+    }else{
+      this.recentviewlist='';
+     
+    }
+    }, err => {
+    this.service.popup('Alert', 'Already Registered');
+    });
+
+  }
+
 
   bestSeller(){
     
@@ -134,6 +213,10 @@ export class HomePage {
       this.service.popup('Alert', 'Already Registered');
       });
   }
+
+
+
+
 
   gotoviewCart() {
    // alert(111);

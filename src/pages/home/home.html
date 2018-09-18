@@ -45,6 +45,41 @@
 
 <ion-content>
   <ion-list class="main-area">
+
+
+
+      <ion-list-header class="item item-ios list-header list-header-ios">
+         Product Marketing
+          </ion-list-header>
+          
+          <div class="new-arrival" *ngIf="productmarketing!=''">
+             <ion-card *ngFor="let item of productmarketing; index as i"> 
+                    
+              <img class="card-pic" src="{{item.image}}" (click)="gotoDetails(item.id)">
+              <ion-card-content>
+                <ion-row>
+                  <ion-col class="pl-0 pr-0">
+                    <ion-card-title>                 
+                        {{item.product_name}}
+                    </ion-card-title>
+      
+                   
+      
+                    <p class="price">${{item.price}}</p>
+                  </ion-col>
+                  
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+      
+          </div>
+
+          <div class="new-arrival" *ngIf="productmarketing==''">
+              <div>No result in this category</div>
+              </div>
+
+
+
     <ion-list-header class="item item-ios list-header list-header-ios">
       New Arrival
     </ion-list-header>
@@ -68,8 +103,7 @@
                   <ion-icon *ngIf="newarraival.rating>=3" name="star"></ion-icon>
                   <ion-icon *ngIf="newarraival.rating>=4" name="star"></ion-icon>
                   <ion-icon *ngIf="newarraival.rating>=5" name="star"></ion-icon>
-                  <ion-icon *ngIf="newarraival.rating%1!=0" name="star-half"></ion-icon>
-                  
+                  <ion-icon *ngIf="newarraival.rating%1!=0" name="star-half"></ion-icon>  
                   <ion-icon *ngIf="newarraival.rating==0" name="star-outline"></ion-icon>
                   <ion-icon *ngIf="newarraival.rating<=1" name="star-outline"></ion-icon>
                   <ion-icon *ngIf="newarraival.rating<=2" name="star-outline"></ion-icon>
@@ -111,6 +145,7 @@
       </ion-card>
 
     </div>
+
 
     <ion-list-header class="item item-ios list-header list-header-ios">
      Best Seller
@@ -166,6 +201,81 @@
     
     </div>
 
+
+    <!-- recent -->
+
+    <ion-list-header class="item item-ios list-header list-header-ios">
+    Recent View
+    </ion-list-header>
+    
+    <div class="new-arrival" *ngIf="recentviewlist!=''">
+       <ion-card *ngFor="let item of recentviewlist; index as i"> 
+              
+        <img class="card-pic" src="{{item.image}}" (click)="gotoDetails(item.id)">
+        <ion-card-content>
+          <ion-row>
+            <ion-col class="pl-0 pr-0">
+              <ion-card-title>                 
+                  {{item.product_name}}
+              </ion-card-title>
+
+              <div class="star-area">
+                <ion-icon *ngIf="item.rating>=1" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating>=2" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating>=3" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating>=4" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating>=5" name="star"></ion-icon>
+                <ion-icon *ngIf="item.rating%1!=0" name="star-half"></ion-icon>  
+                <ion-icon *ngIf="item.rating==0" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="item.rating<=1" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="item.rating<=2" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="item.rating<=3" name="star-outline"></ion-icon>
+                <ion-icon *ngIf="item.rating<=4" name="star-outline"></ion-icon>
+              
+              <span class="rate">({{item.rating}})</span>
+            </div>
+
+              <p class="price">${{item.price}}</p>
+            </ion-col>
+            <ion-col class="pl-0 pr-0">
+              <div class="like-total">
+                <div class="like-area">  
+                  {{count}}               
+                  <button ion-button (click)="addLikelLst(item.id, i)">
+                    <img *ngIf="item.like == 0" src="assets/img/thumb.png" alt="">
+                    <img *ngIf="item.like == 1" src="assets/img/thumb-b.png" alt="">
+                    <span class="like-nmbr">({{item.total_like}})</span>
+                  </button>
+                  <h3>Like</h3>
+                </div>
+                <div class="like-area">
+                  <button ion-button (click)="addWishList(item.id, i)">
+                    <img *ngIf="item.wishlist == 0" src="assets/img/heart.png" alt="">
+                    <img *ngIf="item.wishlist == 1" src="assets/img/heart-b.png" alt="">
+                    <span class="like-nmbr">({{item.total_wishlist}})</span>
+                  </button>
+                  <h3>WishList</h3>
+                </div>
+              </div>
+              <div class="social-area">
+               <img src="assets/img/fb-icon.png" alt="" (click)="openWithInAppBrowser(item.fb_link)">
+               <img src="assets/img/twtr-icon.png" alt="" (click)="openWithInAppBrowser(item.twitter_link)">
+               <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(item.printerest_link)">
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+
+    </div>
+
+    <div class="new-arrival" *ngIf="recentviewlist==''">
+      <div>No result in this category</div>
+      </div>
+
+
+<!-- recent -->
+
     <ion-list-header class="item item-ios list-header list-header-ios">
       product recommendation
      </ion-list-header>
@@ -219,6 +329,38 @@
        </ion-card>
      
      </div>
+
+
+     <!-- following -->
+
+     <ion-list-header class="item item-ios list-header list-header-ios">
+        Following Category
+        </ion-list-header>
+        
+                   
+             <div class="new-arrival" *ngIf="followinglist!=''">
+                <ion-card *ngFor="let item of followinglist; index as i"> 
+                       
+                 <img class="card-pic" src="{{item.image}}" (click)="gotoproductlist(item.id)">
+                 <ion-card-content>
+                   <ion-row>
+                     <ion-col class="pl-0 pr-0">
+                       <ion-card-title>                 
+                           {{item.category_name}}
+                       </ion-card-title>
+
+                     </ion-col>
+                     
+                   </ion-row>
+                 </ion-card-content>
+               </ion-card>
+         
+             </div>
+   
+             <div class="new-arrival" *ngIf="followinglist==''">
+                 <div>No result in this category</div>
+                 </div>
+   
 
   </ion-list>
   
