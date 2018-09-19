@@ -77,7 +77,7 @@
       <ion-card *ngFor="let productlist of productList">
         <ion-item>
           <ion-thumbnail item-start (click)="gotoDetails(productlist.Product.id)">
-            <img src="{{productlist.ProductImage}}">
+            <img src="{{imageurl+productlist.ProductImage}}">
           </ion-thumbnail>
           <h2>{{productlist.Product.product_name}}</h2>
           <p innerHTML="{{productlist.Product.product_description}}"></p>
@@ -97,7 +97,7 @@
         <ion-card *ngFor="let item of likelist">
            <ion-item>
               <ion-thumbnail item-start  (click)="gotoDetails(item.Product.id)">
-                <img  src="{{item.ProductImage.originalpath}}" alt="">
+                <img  src="{{imageurl+item.ProductImage.originalpath}}" alt="">
               </ion-thumbnail>
               <h2>{{item.Product.product_name}}</h2>
               <p innerHTML="{{item.Product.product_description}}"></p>

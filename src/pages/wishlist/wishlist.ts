@@ -27,7 +27,7 @@ export class WishlistPage {
   is_exist:any;
   likelist:any;
   noofcart:any;
-
+  imageurl:any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -57,6 +57,7 @@ export class WishlistPage {
       this.productList = response.wishlist_details;
       this.is_exist = 1;
       this.likelist = response.likes;
+      this.imageurl=response.imagepath;
     }else{
 			this.message = response.msg;
 			this.is_exist = 0;
@@ -74,7 +75,9 @@ export class WishlistPage {
       console.log(response);
 
       if(response.ACK === 1){
+
         this.likelist = response.likelist;
+        this.imageurl=response.imagepath;
         this.is_exist = 1;
         console.log(this.likelist)
   

@@ -23,7 +23,7 @@
   
   <ion-content>
   <ion-list>
-    <ion-card>
+    <!-- <ion-card>
       <ion-item>
         <ion-thumbnail item-start>
           <img src="assets/img/wish-watch.png">
@@ -35,28 +35,41 @@
       
       
       </ion-item>
-    </ion-card>
+    </ion-card> -->
     
-    <ion-card>
+<ion-list  *ngIf="reviewlist!=''">
+    <ion-card *ngFor="let item of reviewlist"  (click)="gotoDetails(item.Product.id)">
       <ion-item>
         <ion-thumbnail item-start>
-          <img src="assets/img/nikon.jpg">
+          <img src="{{imageurl+item.ProductImage.originalpath}}">
         </ion-thumbnail>
-        <h2>Nikon D-90 DSLR</h2>
-        <ion-note item-end="" class="note note-ios">5m</ion-note>
-        <p>Lorem Ipsum is simply dumy text of the watch printing and typesetting industry.</p>
-        <p>
-          <ion-icon class="star" name="star"></ion-icon>
-          <ion-icon class="star" name="star"></ion-icon>
-          <ion-icon class="star" name="star"></ion-icon>
-          <ion-icon class="star" name="star"></ion-icon>
-          <ion-icon class="star" name="star-half"></ion-icon>
-          <span>(4.5)</span>
+        <h2>{{item.Product.product_name}}</h2>
+        <ion-note item-end="" class="note note-ios">{{item.Rating.date|date:'MMM-dd-yyyy'}}</ion-note>
+        <!-- <p>Lorem Ipsum is simply dumy text of the watch printing and typesetting industry.</p> -->
+        <p class="star-area">
+            <ion-icon *ngIf="item.Rating.rating>=1" name="star"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating>=2" name="star"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating>=3" name="star"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating>=4" name="star"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating>=5" name="star"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating%1!=0" name="star-half"></ion-icon>  
+            <ion-icon *ngIf="item.Rating.rating==0" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating<=1" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating<=2" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating<=3" name="star-outline"></ion-icon>
+            <ion-icon *ngIf="item.Rating.rating<=4" name="star-outline"></ion-icon>
+          <span>({{item.Rating.rating}})</span>
         </p>
       </ion-item>
     </ion-card>
-  
+  </ion-list>
+
     <ion-card>
+      <ion-item  *ngIf="reviewlist==''">No Result Found</ion-item>
+      </ion-card>
+
+  
+    <!-- <ion-card>
       <ion-item>
         <ion-thumbnail item-start>
           <img src="assets/img/drone-b.jpg">
@@ -115,7 +128,7 @@
     
     
       </ion-item>
-    </ion-card>
+    </ion-card> -->
   </ion-list>
   </ion-content>
   

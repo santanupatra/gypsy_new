@@ -146,11 +146,14 @@
           <p class="pro-des" [innerHTML]="productDetails.product_description"></p>
           <!-- <p class="pro-des">Ut enim ad minim veniam, quis nostrud exercitain tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis in vol
           cillum dolore eu.</p> -->
-          <button ion-button color="secondary"> <ion-icon name="cart"></ion-icon> Add to cart</button>
+          <button ion-button class="btncolor" (click)="addtoCart(productDetails.id)">Add to cart</button>
+          <button ion-button class="btncolor" (click)="feed(productDetails.id)">Social</button>
         </ion-card-content>
+
+       
       </ion-card>
 
-
+     
         <ion-list-header class="item item-ios list-header list-header-ios">
           People also like this
         </ion-list-header>
