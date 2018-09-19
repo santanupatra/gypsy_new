@@ -12,7 +12,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ApiProvider } from '../providers/api/api';
 import { ServiceProvider } from '../providers/service/service';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     ApiProvider,
     ServiceProvider,
     InAppBrowser,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

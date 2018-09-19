@@ -7,6 +7,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { ServiceProvider } from '../../providers/service/service';
 import { concat } from 'rxjs/observable/concat';
 import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the HomePage page.
@@ -34,7 +35,11 @@ export class HomePage {
   categoryList:any;
   followinglist:any;
   productmarketing:any;
-  
+  title:any;
+  icon:any;
+  url:any;
+
+
   showSearchbar:boolean=false;
   
 
@@ -67,7 +72,15 @@ export class HomePage {
     private events: Events,
     private loadingCtrl: LoadingController,
     private theInAppBrowser: InAppBrowser,
+    private socialSharing: SocialSharing,
   ) {
+
+    this.title="Product share";
+    this.icon="http://111.93.169.90/team6/randal_crystal/logo/logo.png";
+    this.url="https://bossasound.com/";
+
+
+
     this.user_id = AuthService.getuserid();
     this.events.publish('hideFooter', { isHidden: false});
     this.newArraival();
@@ -315,6 +328,15 @@ export class HomePage {
         this.service.popup('Alert', 'Something went wrong');
     });
   }
+
+  facebookShare() {
+    this.socialSharing.shareViaFacebook(this.title,null,this.url).then(() => {
+      console.log("shareSheetShare: Success");
+    }).catch(() => {
+      console.error("shareSheetShare: failed");
+    });
+  }
+
 
 
 }
