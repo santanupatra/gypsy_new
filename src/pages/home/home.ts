@@ -35,10 +35,15 @@ export class HomePage {
   categoryList:any;
   followinglist:any;
   productmarketing:any;
+
   title:any;
   icon:any;
   url:any;
 
+
+  searchresult:any;
+  typeinput:any;
+  
 
   showSearchbar:boolean=false;
   
@@ -164,7 +169,8 @@ export class HomePage {
       this.image_url = response.image_url;     
 
     }else{
-      //this.message = response.msg;
+      this.newarraivalList='';
+      // this.message = response.msg;
       //this.is_exist = 0;
     }
     }, err => {
@@ -206,6 +212,7 @@ export class HomePage {
           console.log(this.bestseller);
     
         }else{
+          this.bestseller='';
           //this.message = response.msg;
           //this.is_exist = 0;
         }
@@ -217,10 +224,11 @@ export class HomePage {
   recommendation(){
     this.api.post('category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
       
+      console.log(response);
         if(response.Ack === 1){        
           this.follow_products = response.products;          
         }else{
-        
+          this.follow_products='';
       }
       }, err => {
       this.service.popup('Alert', 'Already Registered');
@@ -284,18 +292,19 @@ export class HomePage {
     });
   }
 
-  search(data)
-  {
-    this.navCtrl.push('SearchResultPage',{param:this.myInput})
-    console.log(this.myInput)
-    this.myInput='';
-    this.showSearchbar = !this.showSearchbar;
+  // search(data)
+  // {
+  //   this.navCtrl.push('SearchResultPage',{param:this.myInput})
+  //   console.log(this.myInput)
+  //   this.myInput='';
+  //   this.showSearchbar = !this.showSearchbar;
     
-  }
+  // }
 
   toggleSearchbar()
   {
     this.showSearchbar=!this.showSearchbar;
+    this.searchresult='';
   }
 
   onCancel(ionchange)
@@ -303,6 +312,8 @@ export class HomePage {
     this.showSearchbar = !this.showSearchbar;
     
         console.log('cancel');
+        this.searchresult='';
+        this.typeinput='';
 
   }
 
@@ -329,6 +340,7 @@ export class HomePage {
     });
   }
 
+
   facebookShare() {
     this.socialSharing.shareViaFacebook(this.title,null,this.url).then(() => {
       console.log("shareSheetShare: Success");
@@ -338,5 +350,61 @@ export class HomePage {
   }
 
 
+  checkFocus()
+  {
+    this.typeinput='';
+    console.log('focus')
+    this.api.post('search_keyword',{}).subscribe((response : any)  => {
+      console.log(response);
+  
+      if(response.Ack == 1){
+    
+        this.searchresult=response.results
+        
+      }else{
+        this.searchresult='';
+        
+      }
+      }, 
+      err => {
+        this.service.popup('Alert', 'Something went wrong');
+    }
+  );
 
+  }
+
+  getItems(data)
+  {
+    this.searchresult='';
+
+
+    console.log(this.myInput)
+    this.api.post('search_keyword_after_type',{keywords:this.myInput}).subscribe((response : any)  => {
+      console.log(response);
+  
+      if(response.ACK == 1){
+    
+        this.typeinput=response.products;
+        
+      }else{
+        this.typeinput='';
+        
+      }
+      }, 
+      err => {
+        this.service.popup('Alert', 'Something went wrong');
+    }
+  );
+  }
+
+  selected(data)
+  {
+    console.log(data)
+    this.myInput=data;
+    this.searchresult='';
+    this.typeinput='';
+    this.navCtrl.push('SearchResultPage',{param:this.myInput})
+    this.showSearchbar = !this.showSearchbar;
+    this.myInput='';
+  }
 }

@@ -53,7 +53,9 @@
       <ion-card>
         <div class="card-pic-ban">
             <ion-slides pager >
-                <ion-slide  *ngFor="let item of productimages"><img  *ngIf="productimages.length != 0" src="{{imageurl}}{{item.originalpath}}" alt="">
+
+                <ion-slide  *ngFor="let item of productimages"><img  *ngIf="productimages.length != 0" src="{{imageurl+item.originalpath}}" alt="">
+
                   <img *ngIf="productimages.length == 0" src="assets/img/detail-ban.jpg"alt="">
               
                 </ion-slide></ion-slides>
@@ -112,7 +114,7 @@
 
 
               <button ion-button class="rating"  (click)="show(productDetails.id)" > Add Rating </button>
-              <p class="price-b">{{productDetails.currency_code}}{{productDetails.price}}</p>
+              <p class="price-b">${{productDetails.price}}</p>
             </ion-col>
             <ion-col col-5>
               <div class="like-total-b">
@@ -141,7 +143,7 @@
             </ion-col>
           </ion-row>
           <h2 class="pro-des-tittle">Product Description:</h2>
-          <p class="pro-des">{{productDetails.product_description}}</p>
+          <p class="pro-des" [innerHTML]="productDetails.product_description"></p>
           <!-- <p class="pro-des">Ut enim ad minim veniam, quis nostrud exercitain tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis in vol
           cillum dolore eu.</p> -->
           <button ion-button color="secondary"> <ion-icon name="cart"></ion-icon> Add to cart</button>
