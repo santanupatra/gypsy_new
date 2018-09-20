@@ -38,7 +38,7 @@ imageurl:any;
 searchresult()
 {
   let loading = this.loadingCtrl.create({
-    spinner: 'show',
+    // spinner: 'show',
     content: 'Loading...',
     // duration: 3000
   });

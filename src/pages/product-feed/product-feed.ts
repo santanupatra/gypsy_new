@@ -35,7 +35,7 @@ this.productfeed();
   {
 
     let loading = this.loadingCtrl.create({
-      spinner: 'show',
+      // spinner: 'show',
       content: 'Loading...',
    
     });
@@ -50,7 +50,7 @@ this.productfeed();
   
       }else{
         loading.dismiss();
-        this.feedlist='';
+        
         this.service.popup('Sorry','Please try again later');
       }
       }, err => {
