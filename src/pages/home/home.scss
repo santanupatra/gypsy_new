@@ -1,7 +1,5 @@
 page-home {
-    a{
-        text-decoration: none;
-    }
+
     .title .toolbar-title{ text-align: center;}
     .title .toolbar-title img{ max-width: 38%;}
     .list-header{ background: #dbdbdb;  border-bottom:0; text-transform: inherit;}
@@ -24,7 +22,7 @@ page-home {
     .star-area{width: auto;}
     .star-area .icon{ color: #f67401;}
     .star-area .rate{ font-size: 1.3rem;}
-    .price{ color: #555; font-weight: 600; font-size: 1.6rem;}
+    .price{ color: #555; font-weight: 600; font-size: 1.6rem;display: inline-block;margin-top: 7px;}
     .button{ padding: 0; margin: 0; background: none; box-shadow: none; height: auto;}
     .button:hover:not(.disable-hover){ background-color: transparent; }
     .button .button-inner img{ padding: 0 0.2rem 0 0; width: 21px; }
@@ -32,7 +30,7 @@ page-home {
     .like-total{display: flex; justify-content: space-between; align-items: center;}
     .like-area{width: auto; display: flex; align-items: center; flex-wrap: nowrap; flex-direction: column;}
     .like-area h3{ font-weight: 500; font-size: 1.3rem;}
-    .social-area{width: auto; display: flex; }
+    .social-area{width: auto; display: inline-flex; float: right; }
     .social-area img{ width: 28px; height: 28px; padding: 0 !important; margin: 1rem 0.3rem;}
    
     .cat-slider{height:auto;  margin-bottom:15px}
@@ -48,6 +46,9 @@ page-home {
     .search {
   
         display: flex ;
+    }
+    .icon img{
+        height: 100px;
     }
 
     .position-rel{ position: relative;}
