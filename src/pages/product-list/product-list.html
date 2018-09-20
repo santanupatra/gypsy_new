@@ -15,7 +15,8 @@
 
 
 <ion-content padding>
-  <ion-list *ngFor="let product of productList">
+
+  <ion-list class="main-area2" *ngFor="let product of productList">
     <ion-card >
       <ion-item>
         <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)" *ngIf="product.ProductImage[0]">

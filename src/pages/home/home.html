@@ -94,6 +94,11 @@
                   </div>
       
                     <p class="price">${{item.price}}</p>
+                    <div class="social-area">
+                      <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare()">
+                      <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare()">
+                      <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(item.printerest_link)">
+                     </div>
                   </ion-col>
                   <ion-col class="pl-0 pr-0">
                     <div class="like-total">
@@ -115,11 +120,7 @@
                         <h3>WishList</h3>
                       </div>
                     </div>
-                    <div class="social-area">
-                     <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare()">
-                     <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare()">
-                     <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(item.printerest_link)">
-                    </div>
+
                   </ion-col>
                 </ion-row>
               </ion-card-content>
@@ -166,6 +167,11 @@
                 <span class="rate">({{newarraival.rating}})</span>
               </div>
               <p class="price">${{newarraival.price}}</p>
+              <div class="social-area">
+                <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare()">
+                <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare()">
+                <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(newarraival.printerest_link)">
+               </div>
             </ion-col>
             <ion-col class="pl-0 pr-0">
               <div class="like-total">
@@ -187,11 +193,7 @@
                   <h3>WishList</h3>
                 </div>
               </div>
-              <div class="social-area">
-               <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare()">
-               <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare()">
-               <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(newarraival.printerest_link)">
-              </div>
+
             </ion-col>
           </ion-row>
         </ion-card-content>
@@ -228,6 +230,11 @@
                 <span class="rate">(4.5)</span>
               </div>
               <p class="price">${{bseller.price}}</p>
+              <div class="social-area">
+                <img src="assets/img/fb-icon.png" alt="">
+                <img src="assets/img/twtr-icon.png" alt="">
+                <img src="assets/img/pint-icon.png" alt="">
+              </div>
             </ion-col>
             <ion-col class="pl-0 pr-0">
               <div class="like-total">
@@ -246,11 +253,7 @@
                   <h3>WishList</h3>
                 </div>
               </div>
-              <div class="social-area">
-                <img src="assets/img/fb-icon.png" alt="">
-                <img src="assets/img/twtr-icon.png" alt="">
-                <img src="assets/img/pint-icon.png" alt="">
-              </div>
+
             </ion-col>
           </ion-row>
         </ion-card-content>
@@ -295,6 +298,11 @@
             </div>
 
               <p class="price">${{item.price}}</p>
+              <div class="social-area">
+                <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare()">
+                <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare()">
+                <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(item.printerest_link)">
+               </div>
             </ion-col>
             <ion-col class="pl-0 pr-0">
               <div class="like-total">
@@ -316,11 +324,7 @@
                   <h3>WishList</h3>
                 </div>
               </div>
-              <div class="social-area">
-               <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare()">
-               <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare()">
-               <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(item.printerest_link)">
-              </div>
+
             </ion-col>
           </ion-row>
         </ion-card-content>
@@ -359,6 +363,11 @@
                  <span class="rate">(4.5)</span>
                </div>
                <p class="price">${{product.price}}</p>
+               <div class="social-area">
+                <img src="assets/img/fb-icon.png" alt="">
+                <img src="assets/img/twtr-icon.png" alt="">
+                <img src="assets/img/pint-icon.png" alt="">
+              </div>
              </ion-col>
              <ion-col class="pl-0 pr-0">
                <div class="like-total">
@@ -377,11 +386,7 @@
                    <h3>WishList</h3>
                  </div>
                </div>
-               <div class="social-area">
-                 <img src="assets/img/fb-icon.png" alt="">
-                 <img src="assets/img/twtr-icon.png" alt="">
-                 <img src="assets/img/pint-icon.png" alt="">
-               </div>
+
              </ion-col>
            </ion-row>
          </ion-card-content>
@@ -399,7 +404,7 @@
         </ion-list-header>
         
                    
-             <div class="new-arrival" *ngIf="followinglist!=''">
+             <div class="new-arrival icon" *ngIf="followinglist!=''">
                 <ion-card *ngFor="let item of followinglist; index as i"> 
                        
                  <img class="card-pic" src="{{item.image}}" (click)="gotoproductlist(item.id)">
