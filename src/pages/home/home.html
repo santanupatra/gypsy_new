@@ -14,10 +14,9 @@
       <img src="assets/img/home-logo.png" alt="Ionic logo">
     </ion-title>
      <ion-buttons end class="search" >
-      <!-- <button ion-button icon-only *ngIf="showSearchbar">
-        <ion-icon name="search" ></ion-icon> -->
+    
   
-     
+<!--      
   <ion-searchbar   *ngIf="showSearchbar" 
   cancelButtonText="cancel" 
   [showCancelButton]="true" 
@@ -26,11 +25,11 @@
   (input)="getItems($event)"
 
   (ionCancel)="onCancel($event)"> 
-</ion-searchbar>
-<!-- </button> -->
+</ion-searchbar> -->
 
 
-<button ion-button icon-only *ngIf="!showSearchbar" (click)="toggleSearchbar()">
+
+<button ion-button icon-only (click)="gotosearchpage()">
     <ion-icon name="search"></ion-icon></button>
      
     </ion-buttons> 
@@ -49,7 +48,7 @@
 <ion-content>
   <ion-list class="main-area">
 
-    <ion-list *ngIf="searchresult!=''">
+    <!-- <ion-list *ngIf="searchresult!=''">
       <ion-item *ngFor="let item of searchresult" (click)="selected(item.SearchResult.search_keyword)">
         {{item.SearchResult.search_keyword}}
       </ion-item>
@@ -60,7 +59,7 @@
         <ion-item *ngFor="let item of typeinput" (click)="selected(item.Product.product_name)">
           {{item.Product.product_name}}
         </ion-item>
-      </ion-list>
+      </ion-list> -->
 
       <ion-list-header class="item item-ios list-header list-header-ios">
          Product Marketing
@@ -342,7 +341,7 @@
     <ion-list-header class="item item-ios list-header list-header-ios">
       product recommendation
      </ion-list-header>
-     <div class="new-arrival" *ngIf="follow_products==''">
+     <div class="new-arrival" *ngIf="follow_products!=''">
        <ion-card *ngFor="let product of follow_products">
          <img class="card-pic" src="{{product.image}}" (click)="gotoDetails(product.id)">
          <ion-card-content>

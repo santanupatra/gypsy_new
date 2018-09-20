@@ -301,7 +301,7 @@ export class HomePage {
     
   // }
 
-  toggleSearchbar()
+ /* toggleSearchbar()
   {
     this.showSearchbar=!this.showSearchbar;
     this.searchresult='';
@@ -315,7 +315,7 @@ export class HomePage {
         this.searchresult='';
         this.typeinput='';
 
-  }
+  }*/
 
   public openWithInAppBrowser(url : string){
 		let target = "_blank";
@@ -367,7 +367,7 @@ export class HomePage {
   // }
 
 
-  checkFocus()
+ /*checkFocus()
   {
     this.typeinput='';
     console.log('focus')
@@ -423,5 +423,12 @@ export class HomePage {
     this.navCtrl.push('SearchResultPage',{param:this.myInput})
     this.showSearchbar = !this.showSearchbar;
     this.myInput='';
+  }*/
+
+  gotosearchpage()
+  {
+    this.navCtrl.push('SearchPage')
   }
+
 }
+
