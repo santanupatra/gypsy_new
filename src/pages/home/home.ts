@@ -162,7 +162,7 @@ export class HomePage {
   newArraival(){
     console.log(this.user_id);
     this.api.post('newarraival',{user_id:this.user_id}).subscribe((response : any)  => {
-    console.log(response);
+    console.log('new',response);
    // console.log(response.products);
     if(response.ACK === 1){      
       this.newarraivalList = response.products;
@@ -348,6 +348,23 @@ export class HomePage {
       console.error("shareSheetShare: failed");
     });
   }
+
+  twitterShare() {
+    this.socialSharing.shareViaTwitter(this.title,null,this.url).then(() => {
+      console.log("shareSheetShare: Success");
+    }).catch(() => {
+      console.error("shareSheetShare: failed");
+    });
+  }
+
+
+  // pinterestShare() {
+  //   this.socialSharing.shareVi(this.title,null,this.url).then(() => {
+  //     console.log("shareSheetShare: Success");
+  //   }).catch(() => {
+  //     console.error("shareSheetShare: failed");
+  //   });
+  // }
 
 
   checkFocus()

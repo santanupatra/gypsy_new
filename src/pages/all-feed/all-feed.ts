@@ -30,7 +30,7 @@ export class AllFeedPage {
   users=[];
 
   feedlist = [];
-
+  feedlist1:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private httpClient: HttpClient,
     public api:ApiProvider,
@@ -47,7 +47,7 @@ export class AllFeedPage {
   allfeed(infiniteScroll?) {
 
     let loading = this.loadingctrl.create({
-      spinner: 'show',
+      // spinner: 'show',
       content: 'Loading...',
      
     });
@@ -58,6 +58,11 @@ export class AllFeedPage {
       loading.dismiss();
       this.feedlist = this.feedlist.concat(res['feed_list']);
       console.log('allfeed')
+      console.log(this.feedlist)
+      
+      console.log('blank index',this.feedlist[""])
+      this.page
+   
       console.log(res);
       if (infiniteScroll) {
         infiniteScroll.complete();

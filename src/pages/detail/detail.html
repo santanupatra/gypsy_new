@@ -137,9 +137,11 @@
                 </div>
               </div>
               <div class="social-area">
-                <a href="#"><img src="assets/img/fb-icon.png" alt=""></a>
-                <a href="#"><img src="assets/img/twtr-icon.png" alt=""></a>
+
+                <a href="#" (click)="facebookShare(productDetails.url)"><img src="assets/img/fb-icon.png" alt=""></a>
+                <a href="#" (click)="twitterShare(productDetails.url)"><img src="assets/img/twtr-icon.png" alt=""></a>
                 <a href="#"><img src="assets/img/pint-icon.png" alt=""></a>
+
               </div>
             </ion-col>
           </ion-row>

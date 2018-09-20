@@ -5,6 +5,7 @@ import { IonicPage, NavController, NavParams,AlertController,MenuController, Loa
 import { ApiProvider } from '../../providers/api/api';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ServiceProvider } from '../../providers/service/service';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the DetailPage page.
@@ -38,6 +39,8 @@ export class DetailPage {
   ratingArray:any;
   noofcart:any;
   starrating:any;
+  title:any;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -46,8 +49,10 @@ export class DetailPage {
     public alertCtrl: AlertController,
     private service: ServiceProvider,
     private loadingCtrl: LoadingController,
+    private socialSharing: SocialSharing,
     ) {
   
+      this.title="Product share";
     this.id = this.navParams.get('id');
    // alert(this.id);
     this.user_id = AuthService.getuserid();
@@ -254,4 +259,24 @@ export class DetailPage {
       	this.service.popup('Alert', 'Something is Wrong');
       });
    }
+
+   facebookShare(link) {
+     console.log(link);
+    this.socialSharing.shareViaFacebook(this.title,null,link).then(() => {
+      console.log("shareSheetShare: Success");
+    }).catch(() => {
+      console.error("shareSheetShare: failed");
+    });
+  }
+
+  twitterShare(link) {
+    console.log(link);
+    this.socialSharing.shareViaTwitter(this.title,null,link).then(() => {
+      console.log("shareSheetShare: Success");
+    }).catch(() => {
+      console.error("shareSheetShare: failed");
+    });
+  }
+
+
 }
