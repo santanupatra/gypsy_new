@@ -47,6 +47,7 @@ export class ProductListPage {
         this.productList = response.products;  
         this.image_url = response.link;
       }else{
+        this.productList=='';
         this.service.popup('Alert', 'Product Not Found');
       }
     }, err => {
