@@ -1,5 +1,7 @@
 page-home {
-    
+    a{
+        text-decoration: none;
+    }
     .title .toolbar-title{ text-align: center;}
     .title .toolbar-title img{ max-width: 38%;}
     .list-header{ background: #dbdbdb;  border-bottom:0; text-transform: inherit;}
@@ -12,15 +14,13 @@ page-home {
     .new-arrival .card img{ padding: 1.5rem;}
     .card-pic{height: 200px; width: auto; margin: 0 auto;}
     .new-arrival .card .card-content .row .col .card-title{ 
-        font-size: 1.5rem; 
-        font-weight: 600; 
-        margin:0; 
-    
-        text-overflow: inherit;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0;
+        text-overflow: ellipsis;
         white-space: nowrap;
-        overflow: inherit;
-    
-        }
+        overflow: hidden;
+    }
     .star-area{width: auto;}
     .star-area .icon{ color: #f67401;}
     .star-area .rate{ font-size: 1.3rem;}

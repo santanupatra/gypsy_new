@@ -24,6 +24,7 @@
 </ion-header>
 <div class="rating-part" *ngIf ="isShow ==1">
     <ion-card class="rating-area" >
+      <h4>Give Your Rating</h4>
                <rating [(ngModel)]="rate"
         readOnly="false" 
         max="5" 
@@ -39,7 +40,7 @@
       <button ion-button block  class="submitbtn" (click)="submit()">Submit</button>
     </ion-col>
     <ion-col col-6>
-        <button ion-button  block  class="submitbtn" (click)='hide()'>Cancel</button>
+        <button ion-button  block  class="red-btn" (click)='hide()'>Cancel</button>
       
       </ion-col>
   </ion-row>
@@ -113,7 +114,7 @@
 
 
 
-              <button ion-button class="rating"  (click)="show(productDetails.id)" > Add Rating </button>
+              <button ion-button class="rating-btn"  (click)="show(productDetails.id)" > Add Rating </button>
               <p class="price-b">${{productDetails.price}}</p>
             </ion-col>
             <ion-col col-5>
@@ -136,9 +137,11 @@
                 </div>
               </div>
               <div class="social-area">
-                <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare(productDetails.url)">
-                <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare(productDetails.url)">
-                <img src="assets/img/pint-icon.png" alt="">
+
+                <a href="#" (click)="facebookShare(productDetails.url)"><img src="assets/img/fb-icon.png" alt=""></a>
+                <a href="#" (click)="twitterShare(productDetails.url)"><img src="assets/img/twtr-icon.png" alt=""></a>
+                <a href="#"><img src="assets/img/pint-icon.png" alt=""></a>
+
               </div>
             </ion-col>
           </ion-row>
@@ -147,7 +150,7 @@
           <!-- <p class="pro-des">Ut enim ad minim veniam, quis nostrud exercitain tion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis in vol
           cillum dolore eu.</p> -->
           <button ion-button class="btncolor" (click)="addtoCart(productDetails.id)">Add to cart</button>
-          <button ion-button class="btncolor" (click)="feed(productDetails.id)">Social</button>
+          <button ion-button class="rating-btn" (click)="feed(productDetails.id)">Social</button>
         </ion-card-content>
 
        
