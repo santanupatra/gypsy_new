@@ -10,7 +10,6 @@
         "build": "ionic-app-scripts build",
         "lint": "ionic-app-scripts lint"
     },
-
     "dependencies": {
         "@angular/animations": "5.2.11",
         "@angular/common": "5.2.11",
@@ -65,5 +64,4 @@
             "android"
         ]
     }
-
 }

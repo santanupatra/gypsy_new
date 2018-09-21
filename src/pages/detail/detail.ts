@@ -23,8 +23,11 @@ export class DetailPage {
   id:any;
   user_id:any;
   prolikeList:any;
+  userlikelist:any;
   url:any;
   israting:any;
+  likeCount:any;
+  userimagepath:any;
   //productDetails:any;
   productDetails: any = {};
   prolikeCount:any;
@@ -34,6 +37,7 @@ export class DetailPage {
   imageurl:any;
   currency:any;
   isShow:any;
+  showList:any;
   product:any;
   rate:any;
   ratingArray:any;
@@ -94,6 +98,14 @@ export class DetailPage {
         if (this.ratingArray.length>0)
         {
           this.israting=1;
+          
+          if (response.likecount>0)
+          {
+       this.likeCount=response.likecount;
+          }
+          else{
+            this.likeCount=0;
+          }
           console.log(this.ratingArray.length)
           this.starrating=response.product_details.Rating[0].Rating[0].average
         }
@@ -161,7 +173,9 @@ export class DetailPage {
       console.log(response);
       if(response.Ack === 1){
         loading.dismiss();
-        this.like = true;        
+        this.like = true; 
+        this.detailsProduct(id);
+
       }
       else{
         this.like = false; 
@@ -183,8 +197,49 @@ export class DetailPage {
     this.product=prodId
   }
 
+  showlist(prodId)
+  {
+    this.showList =1;
+    console.log('prodid',prodId);
+    this.product=prodId
+
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...',
+    });
+
+    loading.present();
+
+
+    this.api.post('productlikelist',{product_id:prodId,user_id:this.user_id}).subscribe((response : any)  => {
+      console.log('productlikelist',response);
+  
+      if(response.ACK == 1){
+    
+        this.userimagepath=response.userimagepath;
+        loading.dismiss();
+       this.userlikelist=response.products;
+        
+      }else{
+        loading.dismiss();
+        this.userlikelist='';
+  
+      }
+      }, err => {
+        loading.dismiss();
+        this.service.popup('Alert', 'Something went wrong');
+    });
+
+    
+  }
+
+
   hide() {
     this.isShow =0;
+  }
+
+  hidelist()
+  {
+    this.showList =0;
   }
 
   submit()
@@ -277,6 +332,39 @@ export class DetailPage {
       console.error("shareSheetShare: failed");
     });
   }
+ 
 
+  follow(id)
+  {
+console.log(id);
+
+let loading = this.loadingCtrl.create({
+  content: 'Please wait...',
+});
+
+loading.present();
+
+
+this.api.post('followuser',{follower_to:id,followed_by:this.user_id}).subscribe((response : any)  => {
+  console.log('followuser',response);
+
+  if(response.ACK == 1){
+
+   
+    loading.dismiss();
+  
+    
+  }else{
+    loading.dismiss();
+ 
+
+  }
+  }, err => {
+    loading.dismiss();
+    this.service.popup('Alert', 'Something went wrong');
+});
+
+// follower_to
+  }
 
 }
