@@ -71,12 +71,12 @@
               <img class="card-pic" src="{{item.image}}" (click)="gotoDetails(item.id)">
               <ion-card-content>
                 <ion-row>
-                  <ion-col class="pl-0 pr-0">
+                  <!-- <ion-col class="pl-0 pr-0">
                     <ion-card-title>                 
                         {{item.product_name}}
-                    </ion-card-title>
+                    </ion-card-title> -->
       
-                    <div class="star-area">
+                    <!-- <div class="star-area">
                       <ion-icon *ngIf="item.rating>=1" name="star"></ion-icon>
                       <ion-icon *ngIf="item.rating>=2" name="star"></ion-icon>
                       <ion-icon *ngIf="item.rating>=3" name="star"></ion-icon>
@@ -90,16 +90,16 @@
                       <ion-icon *ngIf="item.rating<=4" name="star-outline"></ion-icon>
                     
                     <span class="rate">({{item.rating}})</span>
-                  </div>
+                  </div> -->
       
-                    <p class="price">${{item.price}}</p>
+                    <!-- <p class="price">${{item.price}}</p>
                     <div class="social-area">
                       <img src="assets/img/fb-icon.png" alt="" (click)="facebookShare()">
                       <img src="assets/img/twtr-icon.png" alt="" (click)="twitterShare()">
                       <img src="assets/img/pint-icon.png" alt="" (click)="openWithInAppBrowser(item.printerest_link)">
-                     </div>
-                  </ion-col>
-                  <ion-col class="pl-0 pr-0">
+                     </div> -->
+                  <!-- </ion-col> -->
+                  <!-- <ion-col class="pl-0 pr-0">
                     <div class="like-total">
                       <div class="like-area">  
                         {{count}}               
@@ -120,7 +120,7 @@
                       </div>
                     </div>
 
-                  </ion-col>
+                  </ion-col> -->
                 </ion-row>
               </ion-card-content>
             </ion-card>
