@@ -44,6 +44,7 @@ export class DetailPage {
   noofcart:any;
   starrating:any;
   title:any;
+  followed:any;
 
   constructor(
     public navCtrl: NavController,
@@ -92,6 +93,7 @@ export class DetailPage {
     this.api.post('productdetails',{product_id:id, user_id:this.user_id}).subscribe((response : any)  => {
       console.log(response);
       if(response.Ack === 1){
+        this.likeCount=response.likecount;
        
         this.ratingArray=response.product_details.Rating
         console.log(this.ratingArray)
@@ -99,13 +101,9 @@ export class DetailPage {
         {
           this.israting=1;
           
-          if (response.likecount>0)
-          {
-       this.likeCount=response.likecount;
-          }
-          else{
-            this.likeCount=0;
-          }
+         
+       
+         
           console.log(this.ratingArray.length)
           this.starrating=response.product_details.Rating[0].Rating[0].average
         }
@@ -212,12 +210,25 @@ export class DetailPage {
 
     this.api.post('productlikelist',{product_id:prodId,user_id:this.user_id}).subscribe((response : any)  => {
       console.log('productlikelist',response);
+      
   
       if(response.ACK == 1){
     
         this.userimagepath=response.userimagepath;
         loading.dismiss();
        this.userlikelist=response.products;
+
+
+       if(response.follow_list==0)
+       {
+         for(var i=0;i<this.userlikelist.length;i++)
+         {
+        this.userlikelist[i].User.is_follow=0;
+         }
+       }
+      
+
+
         
       }else{
         loading.dismiss();
@@ -334,7 +345,7 @@ export class DetailPage {
   }
  
 
-  follow(id)
+  /*follow(id)
   {
 console.log(id);
 
@@ -347,24 +358,58 @@ loading.present();
 
 this.api.post('followuser',{follower_to:id,followed_by:this.user_id}).subscribe((response : any)  => {
   console.log('followuser',response);
+  console.log(response.msg);
 
-  if(response.ACK == 1){
+  // if(response.ACK == 1){
 
    
-    loading.dismiss();
+  //   loading.dismiss();
   
     
-  }else{
-    loading.dismiss();
+  // }else{
+  //   loading.dismiss();
  
 
-  }
+  // }
   }, err => {
     loading.dismiss();
     this.service.popup('Alert', 'Something went wrong');
 });
 
 // follower_to
+  }*/
+
+  follow(id,index)
+  {
+    console.log('userid',this.user_id)
+    console.log('userid2',id)
+    this.api.post('followuser',{followed_by:this.user_id,follower_to:id}).subscribe((response : any)  => {
+     console.log('follow')
+      console.log(response);
+  
+      if(response.Ack == 1){
+    
+        this.service.popup('',response.msg);
+this.userlikelist[index].User.is_follow=response.followed;
+
+console.log(this.userlikelist[index].User.is_follow);
+    
+        
+      }
+      else{
+        this.service.popup('', 'Something went wrong');
+        
+      }
+      }, err => {
+        this.service.popup('Alert', 'Something went wrong');
+    });
   }
+
+
+
+
+
+
+
 
 }

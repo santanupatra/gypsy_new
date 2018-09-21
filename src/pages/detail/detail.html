@@ -52,16 +52,22 @@
 <div class="list-part" *ngIf ="showList ==1">
   <ion-card class="list-area" *ngIf ="userlikelist!=''">
     <h4>Who likes this product</h4>
-    <ion-item *ngFor="let item of userlikelist">
+    <ion-item *ngFor="let item of userlikelist, let i=index of userlikelist">
       <!-- <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)" *ngIf="product.ProductImage[0]">
         <img src="{{image_url+product.ProductImage[0].originalpath}}">
       </ion-thumbnail> -->
 
+      <ion-thumbnail item-start *ngIf="item.UserImage.originalpath">
+        <img src="{{userimagepath+item.UserImage.originalpath}}">
+      </ion-thumbnail>
+
       <ion-thumbnail item-start *ngIf="!item.UserImage.originalpath">
           <img src="assets/img/noimage.png">
         </ion-thumbnail>
-      <h2>{{item.User.first_name}}</h2>
-      <button ion-button  block  class="follow-btn" (click)='follow(item.User.id)'>Follow</button>
+      <h2>{{item.User.first_name}} {{item.User.last_name}}</h2>
+      <button ion-button  block  class="follow-btn" (click)='follow(item.User.id,i)' *ngIf="item.User.is_follow==0">Follow</button>
+      <button ion-button  block  class="follow-btn" (click)='follow(item.User.id,i)' *ngIf="item.User.is_follow==1">Following</button>
+      <!-- <button ion-button  block  class="follow-btn" (click)='follow(item.User.id)'  *ngIf="followed==0">Following</button> -->
            
     </ion-item>
     <button ion-button  block  class="red-btn" (click)='hidelist()'>Cancel</button>
@@ -152,8 +158,8 @@
                   <button ion-button (click)="addLikelLst(productDetails.id)">
                     <img *ngIf="!like" src="assets/img/thumb.png" alt="">
                     <img *ngIf="like" src="assets/img/thumb-b.png" alt="">
-                    <span *ngIf="likeCount>0" class="like-nmbr">({{likeCount}})</span>
-                    <span  *ngIf="likeCount==0"  class="like-nmbr">(0)</span>
+                    <span class="like-nmbr">({{likeCount}})</span>
+                    
                   </button>
                   <h3 (click)="showlist(productDetails.id)">Like</h3>
                 </div>

@@ -135,7 +135,7 @@ export class HomePage {
   followlist(){
     console.log(this.user_id);
     this.api.post('userwise_category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
-    console.log('userwise_category_follow_list',response);
+    console.log('category_follow_list',response);
   
     if(response.Ack === 1){      
       this.followinglist= response.category;
@@ -224,7 +224,7 @@ export class HomePage {
   recommendation(){
     this.api.post('category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
       
-      console.log(response);
+      console.log('recommendation',response);
         if(response.Ack === 1){        
           this.follow_products = response.products;          
         }else{

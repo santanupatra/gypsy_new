@@ -31,7 +31,7 @@ export class ApiProvider {
 
   	return this.http.post(apiUrl+'/'+link, data).map(response => {
 
-    
+      console.log(data)
       	return response;
     });
 
@@ -56,5 +56,10 @@ export class ApiProvider {
   //   }
 
   
+  
+
+
+
+
 }
 
