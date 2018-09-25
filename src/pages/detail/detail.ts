@@ -45,6 +45,7 @@ export class DetailPage {
   starrating:any;
   title:any;
   followed:any;
+  videolink:any;
 
   constructor(
     public navCtrl: NavController,
@@ -94,6 +95,8 @@ export class DetailPage {
       console.log(response);
       if(response.Ack === 1){
         this.likeCount=response.likecount;
+        this.videolink=response.video_url;
+
        
         this.ratingArray=response.product_details.Rating
         console.log(this.ratingArray)

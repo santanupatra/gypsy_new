@@ -16,4 +16,9 @@ page-edit-profile {
  .list{margin-bottom: 55px;}
 .list > .item-block:first-child{ border-top: 0;}
 .text-input{ margin: 13px 8px;}
+
+
+.po-rel{position: relative;}
+    .pro-pic-area{width: 75px; height: 75px; margin: 30px auto 0; border-radius: 50%; overflow: hidden; }
+    .edit{ position: absolute; box-shadow: 0px 1px 10px 0px #8a8b8b; bottom: 0; left: 47%; z-index: 100; font-size: 22px; color: #30be21 !important; width: 28px; height: 28px; background: #ffffff; text-align: center; border-radius: 50%; line-height: 1.4;}
 }

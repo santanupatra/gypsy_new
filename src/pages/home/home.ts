@@ -35,6 +35,8 @@ export class HomePage {
   categoryList:any;
   followinglist:any;
   productmarketing:any;
+  MarketingimageUrl:any;
+  recommenproductimage:any;
 
   title:any;
   icon:any;
@@ -116,7 +118,7 @@ export class HomePage {
   
     if(response.Ack === 1){      
       this.productmarketing= response.products;
-      this.image_url = response.image_url;     
+      this.MarketingimageUrl = response.image_url;     
 
     }else
     {
@@ -226,7 +228,9 @@ export class HomePage {
       
       console.log('recommendation',response);
         if(response.Ack === 1){        
-          this.follow_products = response.products;          
+          this.follow_products = response.products;    
+          
+          this.recommenproductimage=response.image_url;
         }else{
           this.follow_products='';
       }

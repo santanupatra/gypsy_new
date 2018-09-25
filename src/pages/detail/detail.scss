@@ -5,11 +5,17 @@ page-detail {
 .title .toolbar-title{ text-align: center;}
 .title .toolbar-title img{ max-width: 38%;}
 .list-header{ background: #dbdbdb;  border-bottom:0; text-transform: inherit;}
-
+.item-md{
+    padding-left: 0;
+}
+.link-btn .label{
+    display: flex;
+    justify-content: space-between;
+}
 .label{ color: #4f4f4f; font-size: 1.9rem; font-weight: 600; }
 .card-content{ padding-top: 0; padding-bottom: 12px;}
-.new-arrival{ overflow-x: scroll; display:-webkit-box; align-items: center; padding: 10px 0;}
-.new-arrival .card{ width: 245px;}
+.new-arrival{ overflow-x: scroll; display:-webkit-box; align-items: center; padding: 10px 22px;margin: 5px 20px;}
+.new-arrival .card{ width: 244px;}
 .new-arrival .card:first-child{ margin-top: 0;}
 .new-arrival .card img{ padding: 1.5rem;}
 .card-pic{height: 200px; width: auto; margin: 0 auto;}
@@ -84,8 +90,30 @@ page-detail {
             color: rgb(60, 150, 60);
         }
     }
+
+}
+.close{
+    overflow: hidden;
+}
+.close ion-icon {
+    font-size: 25px;
+    font-weight: 600;
+    color: red;
+    float: right;
+    margin-right: 2px;
 }
 
+.liketitle
+{
+    font-size: 25px;
+    font-weight: 600;
+    color: black;
+    float: right;
+   
+}
+.list-ios{
+    margin: -1px 0 52px;
+}
 .submitbtn{
     background-color: #353535;
     border-radius: 6px;
@@ -95,8 +123,9 @@ page-detail {
 .red-btn{
     background-color: #f22a2a;
     border-radius: 6px;
-    padding: 24px 0;
+    padding: 12px 24px;
     font-size: 16px;
+    float: right;
 }
 .btncolor
 {
@@ -112,7 +141,11 @@ page-detail {
 .position-rel{ position: relative;}
 .cart-amnt{ background-color: #555; position: absolute; width: 18px; height: 18px; z-index: 100; border-radius: 50%; top: -4px; right: 0; text-align: center; color: #ffffff;}
 
-
+.list-area h3{
+    font-size: 18px;
+    background: #f4f3f3;
+    padding: 7px;
+}
 
 .list-part{
     position: fixed;
@@ -128,7 +161,7 @@ page-detail {
 }
 .list-area{
     text-align: center;
-    padding: 30px 28px;
+    padding: 5px 6px;
     border-radius: 10px;
     &.card .item.item-block .item-inner{
         border-bottom: #eee 1px solid !important;
@@ -146,20 +179,24 @@ page-detail {
         }
     }
 }
-
+.label h2{
+    font-size: 1.4rem;
+}
 .follow-btn{
-    background-color: gray;
+    background-color: #676767;
     border-radius: 6px;
-    padding: 24px 0;
-    font-size: 16px;
+    padding: 15px 10px !important;
+    font-size: 11px;
 }
 
 .ok-btn
 {
     background-color: gray;
     border-radius: 6px;
-    padding: 24px 0;
+    padding: 24px 24px;
     font-size: 16px;
 }
+
+
 
 }

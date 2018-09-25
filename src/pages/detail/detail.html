@@ -51,36 +51,35 @@
 
 <div class="list-part" *ngIf ="showList ==1">
   <ion-card class="list-area" *ngIf ="userlikelist!=''">
-    <h4>Who likes this product</h4>
-    <ion-item *ngFor="let item of userlikelist, let i=index of userlikelist">
+  <div class="close">
+      <h3><b>Who likes this product</b></h3>
+    <ion-icon name="close" md="md-close" (click)='hidelist()'></ion-icon>
+  </div>
+   
+    <ion-item class="link-btn" *ngFor="let item of userlikelist">
       <!-- <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)" *ngIf="product.ProductImage[0]">
         <img src="{{image_url+product.ProductImage[0].originalpath}}">
       </ion-thumbnail> -->
 
-      <ion-thumbnail item-start *ngIf="item.UserImage.originalpath">
-        <img src="{{userimagepath+item.UserImage.originalpath}}">
-      </ion-thumbnail>
-
       <ion-thumbnail item-start *ngIf="!item.UserImage.originalpath">
           <img src="assets/img/noimage.png">
         </ion-thumbnail>
-      <h2>{{item.User.first_name}} {{item.User.last_name}}</h2>
-      <button ion-button  block  class="follow-btn" (click)='follow(item.User.id,i)' *ngIf="item.User.is_follow==0">Follow</button>
-      <button ion-button  block  class="follow-btn" (click)='follow(item.User.id,i)' *ngIf="item.User.is_follow==1">Following</button>
-      <!-- <button ion-button  block  class="follow-btn" (click)='follow(item.User.id)'  *ngIf="followed==0">Following</button> -->
+      <h2>{{item.User.first_name}}</h2>
+      <button ion-button  class="follow-btn" (click)='follow(item.User.id)'>Follow</button>
            
     </ion-item>
-    <button ion-button  block  class="red-btn" (click)='hidelist()'>Cancel</button>
+
 </ion-card>
 
 <ion-card class="list-area" *ngIf ="userlikelist==''">
   <h2>
     No one like this product till now
   </h2>
-  <button ion-button  block  class="ok-btn" (click)='hidelist()'>Ok</button>
+  <button ion-button  class="ok-btn" (click)='hidelist()'>Ok</button>
 </ion-card>
 
 </div>
+
 
 <ion-content>
 
@@ -89,13 +88,22 @@
       <ion-card>
         <div class="card-pic-ban">
             <ion-slides pager >
-
-                <ion-slide  *ngFor="let item of productimages"><img  *ngIf="productimages.length != 0" src="{{imageurl+item.originalpath}}" alt="">
-
-                  <img *ngIf="productimages.length == 0" src="assets/img/detail-ban.jpg"alt="">
               
-                </ion-slide></ion-slides>
-          <!-- <img src="assets/img/detail-ban.jpg"> -->
+              <ion-slide *ngIf="productDetails.video!=''">
+                  <video  controls="controls" preload="auto" webkit-playsinline="webkit-playsinline" >
+                      <source src="{{videolink+productDetails.video}}" type="video/mp4">
+                  </video>
+              </ion-slide>
+                <ion-slide *ngFor="let image of productimages">
+                  
+
+                    
+
+                   <img  *ngIf="productimages.length != 0" src="{{imageurl+image.originalpath}}" alt="">                   
+                  <img *ngIf="productimages.length == 0" src="assets/img/noimage.png"alt="">
+              
+                  </ion-slide>
+              </ion-slides>
         </div>
        
         
