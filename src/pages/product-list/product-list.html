@@ -15,11 +15,12 @@
 
 
 <ion-content padding>
-  <ion-list *ngFor="let product of productList">
+
+  <ion-list class="main-area2" *ngFor="let product of productList">
     <ion-card >
       <ion-item>
         <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)" *ngIf="product.ProductImage[0]">
-          <img src="{{product.ProductImage[0].originalpath}}">
+          <img src="{{image_url+product.ProductImage[0].originalpath}}">
         </ion-thumbnail>
 
         <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)" *ngIf="!product.ProductImage[0]">
@@ -37,4 +38,6 @@
      
 
   </ion-list>
+
+
 </ion-content>

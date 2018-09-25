@@ -1,0 +1,39 @@
+<!--
+  Generated template for the ProductFeedPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ProductFeed</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<ion-list *ngIf="feedlist!=''">
+    <ion-card *ngFor="let item of feedlist">
+      <ion-item>
+        <ion-thumbnail item-start *ngIf="item.image">
+          <img src="{{item.image}}">
+        </ion-thumbnail>
+
+        <ion-thumbnail item-start *ngIf="!item.image">
+            <img src="assets/img/noimage.png">
+          </ion-thumbnail>
+        <h2>{{item.title}}</h2>
+        <h2>{{item.description}}</h2>
+        <h2>{{item.date|date:'MMM dd,yyyy'}}</h2>
+       
+      </ion-item>
+    </ion-card>
+  </ion-list>
+
+  <ion-list *ngIf="feedlist==null">
+    <div>No Feed List for this product</div>
+  </ion-list>
+
+</ion-content>

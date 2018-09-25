@@ -7,6 +7,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { ServiceProvider } from '../../providers/service/service';
 import { concat } from 'rxjs/observable/concat';
 import { InAppBrowser,InAppBrowserOptions } from '@ionic-native/in-app-browser';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the HomePage page.
@@ -30,6 +31,22 @@ export class HomePage {
   follow_products:any;
   myInput:any;
   noofcart:any;
+  recentviewlist:any;
+  categoryList:any;
+  followinglist:any;
+  productmarketing:any;
+  MarketingimageUrl:any;
+  recommenproductimage:any;
+
+  title:any;
+  icon:any;
+  url:any;
+
+
+  searchresult:any;
+  typeinput:any;
+  
+
   showSearchbar:boolean=false;
   
 
@@ -62,13 +79,25 @@ export class HomePage {
     private events: Events,
     private loadingCtrl: LoadingController,
     private theInAppBrowser: InAppBrowser,
+    private socialSharing: SocialSharing,
   ) {
+
+    this.title="Product share";
+    this.icon="http://111.93.169.90/team6/randal_crystal/logo/logo.png";
+    this.url="https://bossasound.com/";
+
+
+
     this.user_id = AuthService.getuserid();
     this.events.publish('hideFooter', { isHidden: false});
     this.newArraival();
     this.bestSeller();
     this.recommendation();
     this.cartcount();
+    this.recentView();
+   
+    this.productMarketing();
+    this.followlist();
   }
 
   ionViewDidLoad() {
@@ -82,17 +111,68 @@ export class HomePage {
     this.navCtrl.push('DetailPage', {id:id});
   }
 
+  productMarketing(){
+    console.log(this.user_id);
+    this.api.post('category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
+    console.log('productMarketing',response);
+  
+    if(response.Ack === 1){      
+      this.productmarketing= response.products;
+      this.MarketingimageUrl = response.image_url;     
+
+    }else
+    {
+      this.productmarketing='';
+     
+    }
+    }, 
+    err => {
+    this.service.popup('Alert', 'Already Registered');
+    }
+  );
+
+  }
+
+
+  followlist(){
+    console.log(this.user_id);
+    this.api.post('userwise_category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
+    console.log('category_follow_list',response);
+  
+    if(response.Ack === 1){      
+      this.followinglist= response.category;
+      // this.image_url = response.image_url;     
+
+    }else
+    {
+      this.followinglist='';
+     
+    }
+    }, 
+    err => {
+    this.service.popup('Alert', 'Already Registered');
+    }
+  );
+
+  }
+  gotoproductlist(id)
+  {
+    console.log(id)
+    this.navCtrl.push('ProductListPage', {id:id});
+  }
+
   newArraival(){
     console.log(this.user_id);
     this.api.post('newarraival',{user_id:this.user_id}).subscribe((response : any)  => {
-    //console.log(response);
+    console.log('new',response);
    // console.log(response.products);
     if(response.ACK === 1){      
       this.newarraivalList = response.products;
       this.image_url = response.image_url;     
 
     }else{
-      //this.message = response.msg;
+      this.newarraivalList='';
+      // this.message = response.msg;
       //this.is_exist = 0;
     }
     }, err => {
@@ -100,6 +180,26 @@ export class HomePage {
     });
 
   }
+
+  recentView(){
+    console.log(this.user_id);
+    this.api.post('recentview',{user_id:this.user_id}).subscribe((response : any)  => {
+    console.log(response);
+  
+    if(response.ACK === 1){      
+      this.recentviewlist = response.products;
+      this.image_url = response.image_url;     
+
+    }else{
+      this.recentviewlist='';
+     
+    }
+    }, err => {
+    this.service.popup('Alert', 'Already Registered');
+    });
+
+  }
+
 
   bestSeller(){
     
@@ -113,6 +213,7 @@ export class HomePage {
           console.log(this.bestseller);
     
         }else{
+          this.bestseller='';
           //this.message = response.msg;
           //this.is_exist = 0;
         }
@@ -124,15 +225,22 @@ export class HomePage {
   recommendation(){
     this.api.post('category_follow_list',{user_id:this.user_id}).subscribe((response : any)  => {
       
+      console.log('recommendation',response);
         if(response.Ack === 1){        
-          this.follow_products = response.products;          
+          this.follow_products = response.products;    
+          
+          this.recommenproductimage=response.image_url;
         }else{
-        
+          this.follow_products='';
       }
       }, err => {
       this.service.popup('Alert', 'Already Registered');
       });
   }
+
+
+
+
 
   gotoviewCart() {
    // alert(111);
@@ -187,18 +295,19 @@ export class HomePage {
     });
   }
 
-  search(data)
-  {
-    this.navCtrl.push('SearchResultPage',{param:this.myInput})
-    console.log(this.myInput)
-    this.myInput='';
-    this.showSearchbar = !this.showSearchbar;
+  // search(data)
+  // {
+  //   this.navCtrl.push('SearchResultPage',{param:this.myInput})
+  //   console.log(this.myInput)
+  //   this.myInput='';
+  //   this.showSearchbar = !this.showSearchbar;
     
-  }
+  // }
 
-  toggleSearchbar()
+ /* toggleSearchbar()
   {
     this.showSearchbar=!this.showSearchbar;
+    this.searchresult='';
   }
 
   onCancel(ionchange)
@@ -206,8 +315,10 @@ export class HomePage {
     this.showSearchbar = !this.showSearchbar;
     
         console.log('cancel');
+        this.searchresult='';
+        this.typeinput='';
 
-  }
+  }*/
 
   public openWithInAppBrowser(url : string){
 		let target = "_blank";
@@ -233,4 +344,94 @@ export class HomePage {
   }
 
 
+  facebookShare() {
+    this.socialSharing.shareViaFacebook(this.title,null,this.url).then(() => {
+      console.log("shareSheetShare: Success");
+    }).catch(() => {
+      console.error("shareSheetShare: failed");
+    });
+  }
+
+  twitterShare() {
+    this.socialSharing.shareViaTwitter(this.title,null,this.url).then(() => {
+      console.log("shareSheetShare: Success");
+    }).catch(() => {
+      console.error("shareSheetShare: failed");
+    });
+  }
+
+
+  // pinterestShare() {
+  //   this.socialSharing.shareVi(this.title,null,this.url).then(() => {
+  //     console.log("shareSheetShare: Success");
+  //   }).catch(() => {
+  //     console.error("shareSheetShare: failed");
+  //   });
+  // }
+
+
+ /*checkFocus()
+  {
+    this.typeinput='';
+    console.log('focus')
+    this.api.post('search_keyword',{}).subscribe((response : any)  => {
+      console.log(response);
+  
+      if(response.Ack == 1){
+    
+        this.searchresult=response.results
+        
+      }else{
+        this.searchresult='';
+        
+      }
+      }, 
+      err => {
+        this.service.popup('Alert', 'Something went wrong');
+    }
+  );
+
+  }
+
+  getItems(data)
+  {
+    this.searchresult='';
+
+
+    console.log(this.myInput)
+    this.api.post('search_keyword_after_type',{keywords:this.myInput}).subscribe((response : any)  => {
+      console.log(response);
+  
+      if(response.ACK == 1){
+    
+        this.typeinput=response.products;
+        
+      }else{
+        this.typeinput='';
+        
+      }
+      }, 
+      err => {
+        this.service.popup('Alert', 'Something went wrong');
+    }
+  );
+  }
+
+  selected(data)
+  {
+    console.log(data)
+    this.myInput=data;
+    this.searchresult='';
+    this.typeinput='';
+    this.navCtrl.push('SearchResultPage',{param:this.myInput})
+    this.showSearchbar = !this.showSearchbar;
+    this.myInput='';
+  }*/
+
+  gotosearchpage()
+  {
+    this.navCtrl.push('SearchPage')
+  }
+
 }
+

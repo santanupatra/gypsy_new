@@ -23,6 +23,7 @@ export class CartPage {
 	productList: any;
 	message: any;
 	url:any;
+	imageurl:any;
 
 
 	options : InAppBrowserOptions = {
@@ -77,6 +78,7 @@ export class CartPage {
 			if(response.Ack === 1) {
 				this.productList = response.cart_details;
 				console.log(this.productList);
+				this.imageurl=response.imagepath;
 
 			} else {
 				this.productList = null;

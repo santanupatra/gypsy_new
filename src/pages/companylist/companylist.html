@@ -39,10 +39,14 @@
       <h2>{{listcompany.Company.company_name}}</h2>
       <!-- <p>Lorem Ipsum is simply dumy text of the watch printing and typesetting industry.</p> -->
       <!-- <h2 class="price">$ 27.25</h2> -->
-          <div class="social-area">
+          <!-- <div class="social-area">
             <img (click)="gotoFeed(listcompany.Company.id,1)" *ngIf="listcompany.Company.fb_name !=''" src="assets/img/fb-icon.png" alt="">
             <img (click)="gotoFeed(listcompany.Company.id,2)" *ngIf="listcompany.Company.twitter_name !=''" src="assets/img/twtr-icon.png" alt="">
             <img (click)="gotoFeed(listcompany.Company.id,3)" *ngIf="listcompany.Company.pinterest_name !=''" src="assets/img/pint-icon.png" alt="">
+          </div> -->
+          <div class="social-area">
+            <button (click)="gotoFeed(listcompany.Company.id,1)">All feed</button>
+
           </div>
     </ion-item>
   </ion-card>

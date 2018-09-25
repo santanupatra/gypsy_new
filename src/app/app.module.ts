@@ -12,7 +12,14 @@ import { AuthProvider } from '../providers/auth/auth';
 import { ApiProvider } from '../providers/api/api';
 import { ServiceProvider } from '../providers/service/service';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
+import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -22,6 +29,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   imports: [
     BrowserModule,
     HttpClientModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -36,6 +44,11 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     ApiProvider,
     ServiceProvider,
     InAppBrowser,
+    Camera,
+    FileTransfer,
+    FilePath,
+    File,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -41,15 +41,15 @@ this.company_id =this.navParams.get('company_id');
   //  alert(this.navParams.get('sid'));
    // alert(this.navParams.get('company_id'));
 //alert(this.sid);
-   if(this.sid ==1) {
+   //if(this.sid ==1) {
     this.facbookFeed(this.company_id);
-   }
-   else if(this.sid ==2) {
+   //}
+   //else if(this.sid ==2) {
     //this.twitterFeed(this.company_id);
-   }
-   else {
+  // }
+   //else {
     this.pinterestFeed(this.company_id);
-   }
+   //}
   }
 
   ionViewDidLoad() {
