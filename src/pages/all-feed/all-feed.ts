@@ -46,16 +46,16 @@ export class AllFeedPage {
 
   allfeed(infiniteScroll?) {
 
-    let loading = this.loadingctrl.create({
-      // spinner: 'show',
-      content: 'Loading...',
+    // let loading = this.loadingctrl.create({
+    //   // spinner: 'show',
+    //   content: 'Loading...',
      
-    });
-    loading.present();
+    // });
+    // loading.present();
 
     this.api.post('allcompanyfeedlist',{array_pocket:this.page})
     .subscribe(res => {
-      loading.dismiss();
+      // loading.dismiss();
       this.feedlist = this.feedlist.concat(res['feed_list']);
       console.log('allfeed')
       console.log(this.feedlist)

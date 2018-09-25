@@ -12,34 +12,31 @@
     <ion-title>
       <img src="assets/img/home-logo.png" alt="Ionic logo">
     </ion-title>
-     <ion-buttons end class="search" >
-    
-  
      
-  <ion-searchbar   *ngIf="showSearchbar" 
-  cancelButtonText="cancel" 
-  [showCancelButton]="true" 
-  [(ngModel)]="myInput" 
-  (click)="checkFocus()"
-  (input)="getItems($event)"
-
-  (ionCancel)="onCancel($event)"> 
-</ion-searchbar>
-
-
-
-<button ion-button icon-only *ngIf="!showSearchbar" (click)="toggleSearchbar()">
-    <ion-icon name="search"></ion-icon></button>
-     
-    </ion-buttons> 
-
-   
 
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
+    <!-- <ion-buttons end class="search" > -->
+    <ion-searchbar 
+    cancelButtonText="cancel" 
+    [showCancelButton]="true" 
+    [(ngModel)]="myInput" 
+    (click)="checkFocus()"
+    (input)="getItems($event)"
+  
+    (ionCancel)="onCancel($event)"> 
+  </ion-searchbar>
+  
+  
+  
+  <!-- <button ion-button icon-only *ngIf="!showSearchbar" (click)="toggleSearchbar()">
+      <ion-icon name="search"></ion-icon></button> -->
+       
+      <!-- </ion-buttons>  -->
+
 
     <ion-list *ngIf="searchresult!=''">
         <ion-item *ngFor="let item of searchresult" (click)="selected(item.SearchResult.search_keyword)">

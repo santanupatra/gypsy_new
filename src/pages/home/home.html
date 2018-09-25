@@ -61,14 +61,16 @@
         </ion-item>
       </ion-list> -->
 
-      <ion-list-header class="item item-ios list-header list-header-ios">
+      <!-- <ion-list-header class="item item-ios list-header list-header-ios">
          Product Marketing
-          </ion-list-header>
+          </ion-list-header> -->
           
           <div class="new-arrival" *ngIf="productmarketing!=''">
              <ion-card *ngFor="let item of productmarketing; index as i"> 
                     
-              <img class="card-pic" src="{{item.image}}" (click)="gotoDetails(item.id)">
+              <img class="card-pic" *ngIf="item.image!=undefined" src="{{MarketingimageUrl+item.image}}" (click)="gotoDetails(item.id)">
+              
+              <img class="card-pic"  *ngIf="item.image==undefined" src="assets/img/noimage.png" (click)="gotoDetails(item.id)">
               <ion-card-content>
                 <ion-row>
                   <!-- <ion-col class="pl-0 pr-0">
@@ -343,7 +345,8 @@
      </ion-list-header>
      <div class="new-arrival" *ngIf="follow_products!=''">
        <ion-card *ngFor="let product of follow_products">
-         <img class="card-pic" src="{{product.image}}" (click)="gotoDetails(product.id)">
+         <img class="card-pic"  *ngIf="product.image!=undefined" src="{{recommenproductimage+product.image}}" (click)="gotoDetails(product.id)">
+         <img class="card-pic"  *ngIf="product.image==undefined" src="assets/img/noimage.png" (click)="gotoDetails(product.id)">
          <ion-card-content>
            <ion-row>
              <ion-col class="pl-0 pr-0">

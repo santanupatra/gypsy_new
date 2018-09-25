@@ -23,12 +23,26 @@
   
   <ion-content>
     <ion-list>
-    <ion-item class="brdr-0">
+    <!-- <ion-item class="brdr-0">
       <ion-avatar>
         <img src="assets/img/pro-pic.jpg">
         <div class="edit-area"><ion-icon name="camera"></ion-icon></div>
       </ion-avatar>
-    </ion-item>
+    </ion-item> -->
+
+
+    <div class="po-rel" padding>
+        <a (click)="editProfilePic()"><ion-icon class="edit" name="create"></ion-icon></a>
+          <div class="pro-pic-area" *ngIf="!pathForImage(lastImage)">
+            <img src="{{userImg}}" alt="">
+          </div>
+
+          <div class="pro-pic-area" *ngIf="pathForImage(lastImage)">
+              <ion-thumbnail>
+              <img src="{{pathForImage(lastImage)}}"/>
+             </ion-thumbnail>
+            </div>
+      </div>
   
     <div class="form-field">
       <ion-label class="form-label" >First Name:</ion-label>
