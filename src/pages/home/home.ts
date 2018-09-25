@@ -207,8 +207,7 @@ export class HomePage {
         console.log(response);
           if(response.Ack === 1){
           
-          this.bestseller = response.best_seller;
-          this.image_url = "http://111.93.169.90/team4/gypsy/product_img/";
+          this.bestseller = response.best_seller;          
           //this.is_exist = 1;
     
           console.log(this.bestseller);
