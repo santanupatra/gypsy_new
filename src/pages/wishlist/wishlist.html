@@ -80,7 +80,7 @@
             <img src="{{imageurl+productlist.ProductImage}}">
           </ion-thumbnail>
           <h2>{{productlist.Product.product_name}}</h2>
-          <p innerHTML="{{productlist.Product.product_description}}"></p>
+          <!-- <p innerHTML="{{productlist.Product.product_description}}"></p> -->
           <h2 class="price">${{productlist.Product.price}}</h2>
           <button ion-button  class="btn-dark" (click)="addtoCart(productlist.Product.id)" > <ion-icon name="cart"></ion-icon>Add to cart</button>
           <button ion-button class="btn-primary" (click)="deletewishList(productlist.Wishlist.id)"> <ion-icon name="trash"></ion-icon>Remove</button>
@@ -88,11 +88,11 @@
       </ion-card>
 
 
-       <h3 *ngIf="is_exist ==0" style="text-align:center;">{{message}}</h3>
+       <div *ngIf="productList ==''" style="text-align:center;">{{message}}</div>
 
     </ion-list>
 
-    <ion-list *ngSwitchCase="'likes'"  class="lisk-list">
+    <ion-list *ngSwitchCase="'likes'" >
 
         <ion-card *ngFor="let item of likelist">
            <ion-item>
@@ -103,9 +103,12 @@
               <p innerHTML="{{item.Product.product_description}}"></p>
               <h2 class="price">${{item.Product.price}}</h2>
               <button ion-button class="btn-dark" (click)="addtoCart(item.Product.id)"> <ion-icon name="cart"></ion-icon>Add to cart</button>
-              <button ion-button class="btn-primary" (click)="deletewishListFromLikes(item.Like.id)"> <ion-icon name="trash"></ion-icon>Remove</button>
+              <!-- <button ion-button class="btn-primary" (click)="deletewishList(item.Product.id)"> <ion-icon name="trash"></ion-icon>Remove</button> -->
             </ion-item> 
           </ion-card>
+
+          <div *ngIf="likelist ==''" style="text-align:center;">{{message}}</div>
+
     </ion-list>
   </div>
 

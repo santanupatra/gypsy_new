@@ -22,6 +22,7 @@ export class MyApp {
 
   public footerIsHidden: boolean = false;
 
+
   username:any;
   user_image:any;
   categoryList:any;
@@ -51,9 +52,12 @@ export class MyApp {
           console.log(AuthService.getuserid());      
           if( AuthService.getuserid() ){
             this.rootPage = 'HomePage';
+          
+
           }else{
             events.publish('hideFooter', {isHidden: true});
             this.rootPage = 'LoginPage';
+           
           }
           statusBar.styleDefault();
           splashScreen.hide();

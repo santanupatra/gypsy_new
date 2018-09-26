@@ -50,7 +50,7 @@ export class ForgotPasswordPage {
 
   resetPassword(data){
     let loading = this.loadingCtrl.create({
-      spinner: 'show',
+      
       content: 'Loading Please Wait...',
       duration: 3000
     });

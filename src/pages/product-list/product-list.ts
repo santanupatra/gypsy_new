@@ -28,7 +28,8 @@ export class ProductListPage {
     public api:ApiProvider,
     private AuthService: AuthProvider,
     public alertCtrl: AlertController,
-    private service: ServiceProvider
+    private service: ServiceProvider,
+    private events: Events,
   ) {
     this.cid = this.navParams.get('id');
     this.getProductlist(this.cid);
@@ -37,6 +38,7 @@ export class ProductListPage {
   }
 
   ionViewDidLoad() {
+    this.events.publish('hideFooter', { isHidden: false});
     console.log('ionViewDidLoad ProductListPage');
   }
 
@@ -69,7 +71,7 @@ export class ProductListPage {
 
     }
     else{
-      this.service.popup('Sorry','Please try again later');
+      this.service.popup('Sorry',response.msg);
     
     }
     }, err => {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, Events } from 'ionic-angular';
+import { AuthProvider } from '../../providers/auth/auth';
 
 /**
  * Generated class for the SettingsPage page.
@@ -14,11 +15,23 @@ import { IonicPage, NavController, NavParams, LoadingController, AlertController
   templateUrl: 'settings.html',
 })
 export class SettingsPage {  
+
+isexist:any;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public events: Events,
+    private AuthService: AuthProvider,
   ) {
+
+    if( AuthService.getuserid() ){
+        this.isexist=1;
+    }
+    else
+    {
+        this.isexist=0;
+    }
     
   }
 

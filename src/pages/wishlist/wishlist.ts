@@ -6,6 +6,7 @@ import { ApiProvider } from '../../providers/api/api';
 import { AuthProvider } from '../../providers/auth/auth';
 import { ServiceProvider } from '../../providers/service/service';
 import { concat } from 'rxjs/operator/concat';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 /**
  * Generated class for the WishlistPage page.
@@ -28,6 +29,8 @@ export class WishlistPage {
   likelist:any;
   noofcart:any;
   imageurl:any;
+  imageurllikelist:any;
+  userlikelist:any;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
@@ -57,8 +60,13 @@ export class WishlistPage {
       this.productList = response.wishlist_details;
       this.is_exist = 1;
       this.likelist = response.likes;
+      console.log('likelist',this.likelist)
       this.imageurl=response.imagepath;
+      this.message = response.msg;
+      console.log('msg',this.message)
     }else{
+      this.productList='';
+      this.likelist=''
 			this.message = response.msg;
 			this.is_exist = 0;
     }
@@ -72,12 +80,12 @@ export class WishlistPage {
   mylikelist()
   {
     this.api.likelist('my_like_list',{user_id:this.user_id}).subscribe((response : any)  => {
-      console.log(response);
+      console.log('like',response);
 
       if(response.ACK === 1){
 
-        this.likelist = response.likelist;
-        this.imageurl=response.imagepath;
+        this.userlikelist = response.likelist;
+        this.imageurllikelist=response.imagepath;
         this.is_exist = 1;
         console.log(this.likelist)
   
@@ -92,6 +100,7 @@ export class WishlistPage {
   }
 
   deletewishList(id) {
+  
 		let alert = this.alertCtrl.create({
 			title: 'Confirm Remove',
 			message: 'Do you want remove the item from your wishlist?',
@@ -106,12 +115,12 @@ export class WishlistPage {
 				{
 					text: 'Remove',
 					handler: () => {
-						this.api.post('deletewishlist', { id: id }).subscribe((response: any) => {
+						this.api.post('deletewishlist', { id:id }).subscribe((response: any) => {
 							console.log(response);
-							if (response.Ack === 1) {
-								//  this.productList = response.wishlist_details;
+							if (response.Ack == 1) {	
+                console.log('remove ack1')							//  this.productList = response.wishlist_details;
 								//  this.is_exist = 1;
-								this.productList = null;
+								// this.productList = null;
 								this.mywhishList();
 
 							} else {
@@ -160,6 +169,7 @@ export class WishlistPage {
     this.api.post('addcart',{id:this.user_id,product_id:proid}).subscribe((response : any)  => {
       console.log(response);
       if(response.Ack === 1){
+        this.cartcount();
         // this.navCtrl.push("CartPage");
         this.service.popup('success',response.msg);
   
