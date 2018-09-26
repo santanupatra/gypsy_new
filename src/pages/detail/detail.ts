@@ -46,7 +46,7 @@ export class DetailPage {
   title:any;
   followed:any;
   videolink:any;
-
+  wishlistcount:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -96,6 +96,7 @@ export class DetailPage {
       if(response.Ack === 1){
         this.likeCount=response.likecount;
         this.videolink=response.video_url;
+        this.wishlistcount=response.wishlist;
 
        
         this.ratingArray=response.product_details.Rating
@@ -144,7 +145,6 @@ export class DetailPage {
 
   addWishList(id){
     let loading = this.loadingCtrl.create({
-      spinner: 'show',
       content: 'Loading...',
       duration: 3000
     });
@@ -153,19 +153,28 @@ export class DetailPage {
       console.log(response);
       if(response.Ack === 1){
         loading.dismiss();
-        this.heart = true;        
+        this.heart = true;  
+        this.detailsProduct(id);     
+      }
+
+      else if (response.Ack == 2)
+      {
+        loading.dismiss();
+        this.service.popup('', response.msg);
       }
       else{
-        this.heart = false;  
+        loading.dismiss();
+        this.heart = false; 
+        this.detailsProduct(id); 
       }     
     }, err => {
+      loading.dismiss();
       this.service.popup('Alert', 'Already Registered');
     });
   }
 
   addLikelLst(id){
     let loading = this.loadingCtrl.create({
-      spinner: 'show',
       content: 'Loading...',
       duration: 3000
     });
@@ -178,10 +187,19 @@ export class DetailPage {
         this.detailsProduct(id);
 
       }
+      else if (response.Ack == 2)
+      {
+        loading.dismiss();
+        this.service.popup('', response.msg);
+      }
+
       else{
+        loading.dismiss();
         this.like = false; 
+        this.detailsProduct(id);
       }
     }, err => {
+      loading.dismiss();
       this.service.popup('Alert', 'Already Registered');
     });
   }
@@ -318,8 +336,10 @@ export class DetailPage {
     this.api.post('addcart',{id:this.user_id,product_id:proid}).subscribe((response : any)  => {
       console.log(response);
       if(response.Ack === 1){
+        this.cartcount();
         // this.navCtrl.push("CartPage");
         this.service.popup('success',response.msg);
+        
   
       }else{
         this.service.popup('Sorry','Please try again later');
@@ -387,11 +407,13 @@ this.api.post('followuser',{follower_to:id,followed_by:this.user_id}).subscribe(
     console.log('userid',this.user_id)
     console.log('userid2',id)
     this.api.post('followuser',{followed_by:this.user_id,follower_to:id}).subscribe((response : any)  => {
-     console.log('follow')
+     
       console.log(response);
   
       if(response.Ack == 1){
-    
+        console.log('follow')
+        console.log('isfollow',this.userlikelist[index])
+        
         this.service.popup('',response.msg);
 this.userlikelist[index].User.is_follow=response.followed;
 
@@ -399,8 +421,14 @@ console.log(this.userlikelist[index].User.is_follow);
     
         
       }
+
+      else if (response.Ack == 2)
+      {
+        
+        this.service.popup('', 'Please login');
+      }
       else{
-        this.service.popup('', 'Something went wrong');
+        this.service.popup('', response.msg);
         
       }
       }, err => {

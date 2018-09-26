@@ -9,7 +9,12 @@ page-product-list {
         font-weight: normal;
     }
     .main-area2 {
-        margin-bottom: 56px !important;
+        margin-bottom: 10px !important;
+    }
+    .card-md {
+        margin: 0px;
+        border-radius: 2px;
+        width: calc(100% - 0px);
     }
 
 }

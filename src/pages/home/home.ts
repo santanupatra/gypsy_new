@@ -101,6 +101,8 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+    this.cartcount();
+    this.events.publish('hideFooter', { isHidden: false});
     console.log('ionViewDidLoad HomePage');
    
   }
@@ -127,7 +129,8 @@ export class HomePage {
     }
     }, 
     err => {
-    this.service.popup('Alert', 'Already Registered');
+      console.log(err)
+    // this.service.popup('Alert', 'Already Registered');
     }
   );
 
@@ -150,7 +153,8 @@ export class HomePage {
     }
     }, 
     err => {
-    this.service.popup('Alert', 'Already Registered');
+      console.log(err)
+    // this.service.popup('Alert', 'Already Registered');
     }
   );
 
@@ -176,7 +180,8 @@ export class HomePage {
       //this.is_exist = 0;
     }
     }, err => {
-    this.service.popup('Alert', 'Already Registered');
+      console.log(err)
+    // this.service.popup('Alert', 'Already Registered');
     });
 
   }
@@ -195,7 +200,8 @@ export class HomePage {
      
     }
     }, err => {
-    this.service.popup('Alert', 'Already Registered');
+      console.log(err)
+    // this.service.popup('Alert', 'Already Registered');
     });
 
   }
@@ -218,7 +224,8 @@ export class HomePage {
           //this.is_exist = 0;
         }
         }, err => {
-        this.service.popup('Alert', 'Already Registered');
+          console.log(err)
+        // this.service.popup('Alert', 'Already Registered');
         });
     
       }
@@ -234,7 +241,8 @@ export class HomePage {
           this.follow_products='';
       }
       }, err => {
-      this.service.popup('Alert', 'Already Registered');
+        console.log(err)
+      // this.service.popup('Alert', 'Already Registered');
       });
   }
 
@@ -249,7 +257,6 @@ export class HomePage {
 
   addWishList(id, index){
     let loading = this.loadingCtrl.create({
-      spinner: 'show',
       content: 'Loading...',
       duration: 3000
     });
@@ -261,20 +268,26 @@ export class HomePage {
         this.newarraivalList[index].wishlist = 1;
         this.newarraivalList[index].total_wishlist = this.newarraivalList[index].total_wishlist+1;        
       }
+
+      else if (response.Ack == 2)
+      {
+        loading.dismiss();
+        this.service.popup('', response.msg);
+      }
       else{
         loading.dismiss();
         this.newarraivalList[index].wishlist = 0;
         this.newarraivalList[index].total_wishlist = this.newarraivalList[index].total_wishlist-1; 
       }     
     }, err => {
-      this.service.popup('Alert', 'Already Registered');
+      console.log(err)
+      // this.service.popup('Alert', 'Already Registered');
     });
   }
 
   addLikelLst(id, index){    
     let loading = this.loadingCtrl.create({
-      spinner: 'show',
-      content: 'Loading...',
+         content: 'Loading...',
       duration: 3000
     });
     loading.present();
@@ -285,13 +298,19 @@ export class HomePage {
         this.newarraivalList[index].like = 1; 
         this.newarraivalList[index].total_like = this.newarraivalList[index].total_like+1;      
       }
+      else if (response.Ack == 2)
+      {
+        loading.dismiss();
+        this.service.popup('', response.msg);
+      }
       else{
         loading.dismiss();
         this.newarraivalList[index].like = 0;
         this.newarraivalList[index].total_like = this.newarraivalList[index].total_like-1;  
       }
     }, err => {
-      this.service.popup('Alert', 'Already Registered');
+      console.log(err)
+      // this.service.popup('Alert', 'Already Registered');
     });
   }
 
@@ -339,7 +358,7 @@ export class HomePage {
         
       }
       }, err => {
-        this.service.popup('Alert', 'Something went wrong');
+        // this.service.popup('Alert', 'Something went wrong');
     });
   }
 

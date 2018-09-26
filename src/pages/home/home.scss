@@ -6,7 +6,8 @@ page-home {
     
     .label{ color: #4f4f4f; font-size: 1.7rem; font-weight: 600; }
     .card-content{ padding-top: 0; padding-bottom: 0;}
-    .new-arrival{ overflow-x: scroll; display:-webkit-box; align-items: center; padding: 10px 0;}
+    .new-arrival{ overflow-x: scroll; display:-webkit-box; align-items: center; padding: 10px 0;
+        margin: 0px 3px;}
     .new-arrival .card{ width: 245px;}
     .new-arrival .card:first-child{ margin-top: 0;}
     .new-arrival .card img{ padding: 1.5rem;}

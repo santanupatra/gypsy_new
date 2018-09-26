@@ -51,12 +51,17 @@
 
 <div class="list-part" *ngIf ="showList ==1">
   <ion-card class="list-area" *ngIf ="userlikelist!=''">
-  <div class="close">
+  <div class="like">
       <h3><b>Who likes this product</b></h3>
-    <ion-icon name="close" md="md-close" (click)='hidelist()'></ion-icon>
+      <div class="close">
+       
+          <ion-icon name="close" md="md-close" (click)='hidelist()'></ion-icon>
+        </div>
   </div>
+      
    
-    <ion-item class="link-btn" *ngFor="let item of userlikelist">
+   
+    <ion-item class="link-btn" *ngFor="let item of userlikelist,let i=index of userlikelist">
       <!-- <ion-thumbnail item-start (click)="gotoDetails(product.Product.id)" *ngIf="product.ProductImage[0]">
         <img src="{{image_url+product.ProductImage[0].originalpath}}">
       </ion-thumbnail> -->
@@ -65,8 +70,9 @@
           <img src="assets/img/noimage.png">
         </ion-thumbnail>
       <h2>{{item.User.first_name}}</h2>
-      <button ion-button  class="follow-btn" (click)='follow(item.User.id)'>Follow</button>
-           
+      <!-- <button ion-button  class="follow-btn" (click)='follow(item.User.id)'>Follow</button> -->
+      <button ion-button  block  class="follow-btn" (click)='follow(item.User.id,i)' *ngIf="item.User.is_follow==0">Follow</button>
+      <button ion-button  block  class="follow-btn" (click)='follow(item.User.id,i)' *ngIf="item.User.is_follow==1">Following</button>
     </ion-item>
 
 </ion-card>
@@ -87,18 +93,14 @@
     <ion-list>  
       <ion-card>
         <div class="card-pic-ban">
-            <ion-slides pager >
+            <ion-slides pager *ngFor="let image of productimages" >
               
-              <ion-slide *ngIf="productDetails.video!=''">
-                  <video  controls="controls" preload="auto" webkit-playsinline="webkit-playsinline" >
+              <ion-slide *ngIf="productDetails.video!=''" >
+                  <video class="video" controls="controls" preload="auto" webkit-playsinline="webkit-playsinline" >
                       <source src="{{videolink+productDetails.video}}" type="video/mp4">
                   </video>
               </ion-slide>
-                <ion-slide *ngFor="let image of productimages">
-                  
-
-                    
-
+                <ion-slide >
                    <img  *ngIf="productimages.length != 0" src="{{imageurl+image.originalpath}}" alt="">                   
                   <img *ngIf="productimages.length == 0" src="assets/img/noimage.png"alt="">
               
@@ -175,7 +177,7 @@
                   <button ion-button  (click)="addWishList(productDetails.id)">
                     <img *ngIf="!heart" src="assets/img/heart.png" alt="">
                     <img *ngIf="heart" src="assets/img/heart-b.png" alt="">
-                    <span class="like-nmbr">(38)</span>
+                    <span class="like-nmbr">({{wishlistcount}})</span>
                   </button>
                   <h3>WishList</h3>
                 </div>
@@ -207,7 +209,7 @@
 
       
       <div class="new-arrival" >
-        <ion-card *ngFor="let pro of prolikeList">
+        <ion-card *ngFor="let pro of prolikeList" class="main-area2">
           <img class="card-pic" src="{{url}}{{pro.ProductImage}}">
           <ion-card-content>
             <ion-row>

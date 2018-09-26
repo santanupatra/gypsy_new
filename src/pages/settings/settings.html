@@ -17,12 +17,12 @@
       <div style="padding-bottom:70px">
         <ion-list>      
     
-          <button menuClose ion-item icon-left (click)="openPage('EditProfilePage')">
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="openPage('EditProfilePage')">
               <ion-icon item-start="" role="img" class="icon icon-md ion-md-person item-icon" aria-label="person" ng-reflect-name="person"></ion-icon>
            My Profile
           </button>
     
-          <button menuClose ion-item icon-left (click)="openPage('WishlistPage')">
+          <button menuClose ion-item icon-left  *ngIf="isexist==1" (click)="openPage('WishlistPage')">
               <ion-icon item-start="" role="img" class="icon icon-md ion-md-heart item-icon" aria-label="heart" ng-reflect-name="heart"></ion-icon>
            My Activity
           </button>
@@ -37,17 +37,29 @@
            Refer Friend
           </button> -->
     
-          <button menuClose ion-item icon-left (click)="openPage('ChangePasswordPage')">
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="openPage('ChangePasswordPage')">
               <ion-icon item-start="" role="img" class="icon icon-md ion-md-key item-icon" aria-label="key" ng-reflect-name="key"></ion-icon>
            Change Password
           </button>
     
     
-          <button menuClose ion-item icon-left (click)="openPage('ReviewPage')">
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="openPage('ReviewPage')">
               <ion-icon item-start="" role="img" class="icon icon-md ion-md-star item-icon" aria-label="star" ng-reflect-name="star" ng-reflect-color="primary"></ion-icon>
     
              My Review
             </button>
+
+            <button menuClose ion-item icon-left *ngIf="isexist==0" (click)="openPage('LoginPage')">
+                <ion-icon item-start="" role="img" class="icon icon-md ion-md-star item-icon" aria-label="star" ng-reflect-name="star" ng-reflect-color="primary"></ion-icon>
+      
+              Sign-up
+              </button>
+
+              <button menuClose ion-item icon-left *ngIf="isexist==0" (click)="openPage('LoginPage')">
+                  <ion-icon item-start="" role="img" class="icon icon-md ion-md-star item-icon" aria-label="star" ng-reflect-name="star" ng-reflect-color="primary"></ion-icon>
+        
+                Sign-in
+                </button>
     
           <button menuClose ion-item icon-left (click)="openPage('PrivacyPage')">
             <ion-icon item-left name="ios-list-box-outline" ></ion-icon>
@@ -59,7 +71,7 @@
                Terms & Condition
           </button>
     
-          <button menuClose ion-item icon-left (click)="logout()">
+          <button menuClose ion-item icon-left *ngIf="isexist==1" (click)="logout()">
             <ion-icon item-left name="md-log-out"></ion-icon>
             Logout
           </button>

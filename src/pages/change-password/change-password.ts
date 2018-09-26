@@ -19,6 +19,8 @@ import { ServiceProvider } from '../../providers/service/service';
 })
 export class ChangePasswordPage {
   changeForm: FormGroup;
+  user_id:any;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -30,6 +32,9 @@ export class ChangePasswordPage {
     private fb: FormBuilder,
     public loadingCtrl: LoadingController,
   ) {
+
+    this.user_id = AuthService.getuserid();
+
     this.changeForm = fb.group({           
       'old_password':[null, Validators.required],
       'new_password': [null, Validators.required],
@@ -38,9 +43,10 @@ export class ChangePasswordPage {
   }
 
   changePassword(data){
-    this.api.post('changepassword',data).subscribe((response : any)  => {      
+    data.user_id=this.user_id;
+    this.api.post('changepassword',data).subscribe((response : any)  => {    
+      console.log(response);
      let loading = this.loadingCtrl.create({
-      spinner: 'show',
       content: 'Loading Please Wait...',
       duration: 3000
     });
@@ -52,12 +58,14 @@ export class ChangePasswordPage {
           subTitle: 'Password change successfully.',
            buttons: ['OK']
          });
+         
        alert.present();
+       this.navCtrl.push('HomePage')
       }else{
         loading.dismiss();
         const alert = this.alertCtrl.create({
           title: 'Error!',
-          subTitle: 'Password not change.',
+          subTitle: response.msg,
            buttons: ['OK']
          });
        alert.present();
